@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rocky — Candidate Flow Demo</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="css/rocky-ui.css" />
+  <link rel="stylesheet" href="css/candidate_revamp.css" />
+  <link rel="stylesheet" href="css/interview_revamp.css" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body class="rv-body">
+  <div class="demo-banner">
+    <strong>Design demo</strong> — alur kandidat statis, tanpa backend. Bukan aplikasi produksi.
+  </div>
+
+  <!-- ══════════ SCREEN 1 — LOGIN ══════════ -->
+  <section id="screen-login" class="screen is-active">
+    <div class="rv-ambient" aria-hidden="true"></div>
+    <div class="rv-page">
+      <header class="rv-topbar">
+        <a href="#" class="rv-brand" onclick="return false">
+          <img id="logo-login" src="assets/rocky_logo_on_dark.svg" alt="Rocky" />
+          <span><small>AI Interview</small></span>
+        </a>
+        <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
+          <i id="theme-icon" class="fa-solid fa-moon"></i>
+        </button>
+      </header>
+
+      <div class="rv-login">
+        <section class="rv-login-story">
+          <div class="rv-invite-badge">
+            <i class="fa-regular fa-envelope"></i>
+            Undangan Interview
+          </div>
+          <h1>Selamat datang,<br /><em>Sarah Amelia</em></h1>
+          <p>
+            Anda diundang untuk mengikuti sesi interview online dengan Rocky.
+            Masukkan password akun kandidat Anda untuk melanjutkan.
+          </p>
+
+          <div class="rv-invite-card">
+            <div class="logo-fallback">C</div>
+            <div>
+              <h3>PT Cakra Tekno Nusantara</h3>
+              <p>Posisi: <span class="role">Python Developer</span></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="rv-login-form-wrap">
+          <h2>Masuk ke sesi</h2>
+          <p class="subtitle">Password Anda dikirim melalui email undangan interview.</p>
+
+          <form id="login-form" onsubmit="return handleLogin(event)">
+            <div class="rv-field">
+              <label for="login-password">Password</label>
+              <div class="rv-input-wrap">
+                <input type="password" id="login-password" class="rv-styled" placeholder="Masukkan password Anda" required />
+                <button type="button" class="rv-toggle-pw" onclick="togglePasswordVisibility()" aria-label="Tampilkan password">
+                  <i id="pw-eye-icon" class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="rv-btn rv-btn-primary">
+              <i class="fa-solid fa-right-to-bracket"></i>
+              Lanjut ke Interview
+            </button>
+          </form>
+
+          <ul class="rv-hint-list">
+            <li><i class="fa-solid fa-circle-check" style="color:#10B981"></i> Gunakan laptop atau desktop (bukan HP)</li>
+            <li><i class="fa-solid fa-circle-check" style="color:#10B981"></i> Siapkan kamera &amp; mikrofon sebelum memulai</li>
+            <li><i class="fa-solid fa-circle-check" style="color:#10B981"></i> Pastikan koneksi internet stabil</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SCREEN 2 — PERSIAPAN (READINESS CHECKLIST) ══════════ -->
+  <section id="screen-checklist" class="screen">
+    <div class="rv-ambient" aria-hidden="true"></div>
+    <div class="rv-page">
+      <header class="rv-topbar">
+        <a href="#" class="rv-brand" onclick="return false">
+          <img id="logo-checklist" src="assets/rocky_logo_on_dark.svg" alt="Rocky" />
+          <span><small>AI Interview</small></span>
+        </a>
+        <div class="rv-topbar-right">
+          <span class="rv-topbar-meta">Halo, Sarah Amelia</span>
+          <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
+            <i class="theme-icon-mirror fa-solid fa-moon"></i>
+          </button>
+          <a href="#" class="rv-btn-logout" onclick="goToScreen('screen-login'); return false">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </a>
+        </div>
+      </header>
+
+      <div class="rv-lobby">
+        <aside class="rv-job-panel">
+          <div class="rv-job-card">
+            <div class="rv-job-hero">
+              <div class="rv-job-logos">
+                <img src="assets/rocky_logo_on_dark.svg" alt="Rocky" class="rocky-mini" />
+              </div>
+              <h1>PT Cakra Tekno Nusantara</h1>
+              <p class="position">Python Developer</p>
+            </div>
+            <div class="rv-job-body">
+              <div class="rv-stat-grid">
+                <div class="rv-stat">
+                  <i class="fa-regular fa-calendar-days stat-icon"></i>
+                  <div class="stat-info">
+                    <label>Tanggal</label>
+                    <span id="checklist-date">16 Agu 2026</span>
+                  </div>
+                </div>
+                <div class="rv-stat">
+                  <i class="fa-regular fa-clock stat-icon"></i>
+                  <div class="stat-info">
+                    <label>Durasi</label>
+                    <span>60 menit</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rv-stepper">
+                <div class="rv-step is-active">
+                  <div class="num">1</div>
+                  <div class="label">Persiapan</div>
+                </div>
+                <div class="rv-step">
+                  <div class="num">2</div>
+                  <div class="label">Interview</div>
+                </div>
+                <div class="rv-step">
+                  <div class="num">3</div>
+                  <div class="label">Selesai</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="rv-ready-panel">
+          <h2>Persiapan singkat</h2>
+          <p>Selesaikan persiapan langkah demi langkah di bawah ini untuk memulai interview. Rocky akan memandu Anda.</p>
+
+          <div class="rv-ready-item is-auto">
+            <div class="rv-ready-item-header">
+              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
+              <div class="rv-ready-icon"><i class="fa-solid fa-laptop"></i></div>
+              <div class="rv-ready-copy">
+                <h3>Laptop / desktop</h3>
+                <p style="color:#10B981;font-weight:600">Perangkat Terverifikasi (Laptop/Desktop)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rv-ready-item is-auto">
+            <div class="rv-ready-item-header">
+              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
+              <div class="rv-ready-icon"><i class="fa-solid fa-video"></i></div>
+              <div class="rv-ready-copy">
+                <h3>Kamera, mikrofon &amp; layar siap</h3>
+                <p>Saya siap mengizinkan akses kamera, mikrofon, dan membagikan seluruh layar (Entire Screen).</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rv-ready-item is-auto">
+            <div class="rv-ready-item-header">
+              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
+              <div class="rv-ready-icon"><i class="fa-solid fa-volume-high"></i></div>
+              <div class="rv-ready-copy">
+                <h3>Lingkungan tenang</h3>
+                <p>Saya berada di ruangan yang cukup sunyi tanpa gangguan suara.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rv-ready-item is-auto">
+            <div class="rv-ready-item-header">
+              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
+              <div class="rv-ready-icon"><i class="fa-solid fa-wifi"></i></div>
+              <div class="rv-ready-copy">
+                <h3>Koneksi internet stabil</h3>
+                <p>Menguji kecepatan koneksi internet dan kestabilan ping Anda.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rv-ready-item is-auto">
+            <div class="rv-ready-item-header">
+              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
+              <div class="rv-ready-icon"><i class="fa-solid fa-paper-plane"></i></div>
+              <div class="rv-ready-copy">
+                <h3>Cara menjawab (Uji Coba)</h3>
+                <p>Pelajari alur interview Rocky langkah demi langkah, lalu coba praktik langsung.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rv-cta-wrap">
+            <button type="button" class="rv-btn rv-btn-primary" onclick="startInterview()">
+              Lanjutkan Interview
+            </button>
+            <p class="rv-cta-hint">Semua langkah selesai — Anda siap memulai interview.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="rv-overlay is-visible" id="prepare-overlay" hidden>
+      <div class="rv-overlay-card">
+        <img src="assets/rocky_logo_on_dark.svg" alt="Rocky" style="width:auto;height:40px;background:none;padding:0;border-radius:0;margin-bottom:24px" />
+        <h2>Menyiapkan ruang interview</h2>
+        <p>Mohon tunggu sebentar — jangan tutup atau refresh halaman ini.</p>
+        <div class="rv-progress-track">
+          <div class="rv-progress-fill" id="prepare-progress-fill" style="width:0%"></div>
+        </div>
+        <p class="rv-progress-label" id="prepare-progress-label">Menghubungkan ke Rocky…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SCREEN 3 — LIVE INTERVIEW CALL ══════════ -->
+  <section id="screen-interview" class="screen">
+    <div class="r5-layout-dashboard" style="background:#0b1420;min-height:100vh;color:#fff">
+      <div class="r5-app">
+        <header class="r5-hud-header">
+          <div class="r5-hud-brand">
+            <img src="assets/rocky_logo_on_dark.svg" alt="Allham" style="width:auto;height:22px;margin-right:8px" />
+            <span class="r5-hud-brand-name">Allham</span>
+            <span class="r5-hud-badge">AI Interview</span>
+          </div>
+          <div class="r5-hud-job">
+            <span class="r5-job-title">Python Developer</span>
+            <span class="r5-job-sep">|</span>
+            <span class="r5-job-company">PT Cakra Tekno Nusantara</span>
+          </div>
+          <div class="r5-hud-right">
+            <div class="r5-timer-pill">
+              <i class="fa-solid fa-stopwatch" style="margin-right:6px"></i>
+              <span id="timer-text">59:46</span>
+            </div>
+            <div class="r5-status-pill is-live">
+              <i class="fa-solid fa-circle" style="color:#ef4444;margin-right:6px;font-size:9px"></i>
+              <span>LIVE</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="r5-workspace">
+          <aside class="r5-left-rail">
+            <div class="r5-transcript">
+              <div class="r5-transcript-head">
+                <span class="r5-transcript-glyph"><i class="fa-solid fa-comment-dots"></i></span>
+                <span class="r5-transcript-title">Percakapan</span>
+              </div>
+              <div class="r5-chat-thread" id="live-chat-thread"></div>
+              <div class="r5-transcript-foot">
+                <span class="r5-transcript-foot-note">Percakapan berlangsung secara real-time</span>
+              </div>
+            </div>
+          </aside>
+
+          <main class="r5-main-column">
+            <div class="r5-video-panel">
+              <div class="demo-cam-placeholder">
+                <i class="fa-solid fa-video"></i>
+                <span>Kamera Anda</span>
+              </div>
+
+              <div class="r5-bot-card" id="bot-card">
+                <div class="r5-bot-card-avatar" aria-hidden="true">
+                  <img src="assets/rocky_icon_dark.png" alt="" />
+                  <span class="r5-bot-online-dot" aria-hidden="true"></span>
+                  <span class="r5-bot-card-waves" id="bot-waves" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                  </span>
+                </div>
+                <div class="r5-bot-card-copy">
+                  <span class="r5-bot-card-name">Allham</span>
+                  <span class="r5-bot-card-status" id="bot-status-text">AI Interviewer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="r5-control-bar" style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;padding:16px 24px;align-items:center;background:rgba(15,23,42,0.6);border-top:1px solid rgba(255,255,255,0.08)">
+              <div class="r5-turn-status state-user" id="turn-status">
+                <span class="r5-turn-ring" id="turn-dot" style="background:#10b981"></span>
+                <div class="r5-turn-copy">
+                  <div class="r5-turn-title" id="turn-title">Giliran Anda</div>
+                  <div class="r5-turn-sub" id="turn-sub">Jawab dengan suara, lalu klik tombol untuk kirim</div>
+                </div>
+              </div>
+
+              <div class="r5-mic-column">
+                <div class="r5-mic-dock state-ready" id="mic-dock">
+                  <button type="button" class="r5-mic-btn" id="mic-btn" onclick="handleMicClick()" aria-label="Kirim jawaban" style="cursor:pointer;background:#10b981;border-color:#10b981">
+                    <span class="r5-mic-btn__core">
+                      <i id="mic-icon" class="fa-solid fa-microphone" style="color:#fff"></i>
+                      <span class="r5-mic-btn-waves" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
+                      </span>
+                    </span>
+                  </button>
+                </div>
+                <p class="r5-mic-cta is-visible" id="mic-cta">Klik untuk menjawab (simulasi)</p>
+              </div>
+
+              <aside class="r5-tips-panel" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:10px 14px">
+                <div class="r5-tips-head" style="color:#f59e0b;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;margin-bottom:4px">
+                  <i class="fa-solid fa-lightbulb"></i>
+                  <span>Tips</span>
+                </div>
+                <p class="r5-tips-text" style="font-size:11px;color:#8fa0b8;margin:0;line-height:1.45">
+                  Jawab dengan jelas dan ringkas. Berpikir sebelum menjawab akan membantumu memberikan jawaban terbaik.
+                </p>
+              </aside>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SCREEN 4 — INTERVIEW SELESAI ══════════ -->
+  <section id="screen-done" class="screen">
+    <div class="rv-ambient" aria-hidden="true"></div>
+    <div class="rv-page">
+      <header class="rv-topbar">
+        <a href="#" class="rv-brand" onclick="return false">
+          <img id="logo-done" src="assets/rocky_logo_on_dark.svg" alt="Rocky" />
+          <span><small>AI Interview</small></span>
+        </a>
+        <div class="rv-topbar-right">
+          <span class="rv-topbar-meta">Halo, Sarah Amelia</span>
+          <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
+            <i class="theme-icon-mirror fa-solid fa-moon"></i>
+          </button>
+          <a href="#" class="rv-btn-logout" onclick="goToScreen('screen-login'); return false">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </a>
+        </div>
+      </header>
+
+      <div class="rv-lobby is-done-layout">
+        <div class="rv-done-header-section">
+          <div class="rv-done-header-circle">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#10B981" />
+            </svg>
+          </div>
+          <h2>Interview Selesai</h2>
+          <p>Terima kasih telah mengikuti proses interview. Tim rekrutmen akan meninjau hasil Anda.</p>
+        </div>
+
+        <aside class="rv-job-panel">
+          <div class="rv-job-card">
+            <div class="rv-job-hero">
+              <div class="rv-job-logos">
+                <img src="assets/rocky_logo_on_dark.svg" alt="Rocky" class="rocky-mini" />
+              </div>
+              <h1>PT Cakra Tekno Nusantara</h1>
+              <p class="position">Python Developer</p>
+            </div>
+            <div class="rv-job-body">
+              <div class="rv-stat-grid">
+                <div class="rv-stat">
+                  <i class="fa-regular fa-calendar-days stat-icon"></i>
+                  <div class="stat-info">
+                    <label>Tanggal</label>
+                    <span>16 Agu 2026</span>
+                  </div>
+                </div>
+                <div class="rv-stat">
+                  <i class="fa-regular fa-clock stat-icon"></i>
+                  <div class="stat-info">
+                    <label>Durasi</label>
+                    <span>60 menit</span>
+                  </div>
+                </div>
+              </div>
+              <div class="rv-stepper">
+                <div class="rv-step is-done">
+                  <div class="num">1</div>
+                  <div class="label">Persiapan <i class="fa-solid fa-circle-check step-check-icon"></i></div>
+                </div>
+                <div class="rv-step is-done">
+                  <div class="num">2</div>
+                  <div class="label">Interview <i class="fa-solid fa-circle-check step-check-icon"></i></div>
+                </div>
+                <div class="rv-step is-active">
+                  <div class="num">3</div>
+                  <div class="label">Selesai</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rv-sidebar-done-card">
+            <div class="rv-sidebar-done-content">
+              <div class="rv-sidebar-done-text">
+                <h3>Interview Selesai!</h3>
+                <p>Terima kasih telah meluangkan waktu dan memberikan jawaban terbaik.</p>
+              </div>
+            </div>
+            <div class="rv-sidebar-done-ill">
+              <svg width="72" height="72" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="64" height="64" rx="16" fill="#10B981" fill-opacity="0.1" />
+                <path d="M42 20H22C19.7909 20 18 21.7909 18 24V44C18 46.2091 19.7909 48 22 48H42C44.2091 48 46 46.2091 46 44V24C46 21.7909 44.2091 20 42 20Z" stroke="#10B981" stroke-width="2.5" stroke-linejoin="round" />
+                <path d="M26 16C26 14.8954 26.8954 14 28 14H36C37.1046 14 38 14.8954 38 16V20H26V16Z" fill="#10B981" />
+                <path d="M26 28H38" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M26 34H38" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M26 40H32" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="44" cy="44" r="10" fill="#10B981" />
+                <path d="M40 44L43 47L48 41" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </aside>
+
+        <section class="rv-ready-panel">
+          <div class="rv-done-grid">
+            <div class="rv-done-left-col">
+              <div class="rv-done-card rv-done-video-card">
+                <h3 class="rv-done-card-title">
+                  <i class="fa-solid fa-video" style="margin-right:8px"></i>
+                  Rekaman Interview
+                </h3>
+                <div class="rv-done-video-container">
+                  <div class="rv-done-video-placeholder">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                    <h4>Rekaman Sedang Diproses</h4>
+                    <p>File video rekaman Anda sedang dipersiapkan di server aman.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rv-done-right-col">
+              <div class="rv-done-card rv-done-chat-timeline-card">
+                <h3 class="rv-done-card-title">
+                  <i class="fa-regular fa-comments" style="margin-right:8px"></i>
+                  Riwayat Percakapan
+                </h3>
+                <div class="rv-done-chat-thread" id="done-chat-thread"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

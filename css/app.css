@@ -1,0 +1,69 @@
+/* Demo-only glue styles on top of candidate_revamp.css / interview_revamp.css
+   (copied verbatim from the real app) -- screen switching, and a few small
+   additions that only exist because this is a static, backend-less demo. */
+
+.screen {
+  display: none;
+}
+
+.screen.is-active {
+  display: block;
+}
+
+#screen-interview.is-active {
+  display: block;
+}
+
+/* Placeholder "your camera" panel -- no real getUserMedia in a static demo */
+.demo-cam-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: radial-gradient(circle at 50% 35%, #1c2e42 0%, #0b1420 70%);
+  color: #5b7086;
+}
+
+.demo-cam-placeholder i {
+  font-size: 2.4rem;
+}
+
+.demo-cam-placeholder span {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Recording placeholder on the Selesai screen, same look as .rv-done-video-placeholder */
+.demo-recording-note {
+  font-size: 0.72rem;
+  color: var(--rv-text-dim);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Repo banner -- identifies this as a design demo, not the production app */
+.demo-banner {
+  background: var(--rv-bg-elevated);
+  border-bottom: 1px solid var(--rv-border);
+  color: var(--rv-text-dim);
+  font-size: 0.72rem;
+  text-align: center;
+  padding: 6px 12px;
+  position: relative;
+  z-index: 200;
+}
+
+.demo-banner strong {
+  color: var(--rv-accent);
+}
+
+/* .r5-layout-dashboard (the live call screen) is position:fixed;inset:0 in the
+   real app, since it's meant to be the only thing on screen -- it ignores
+   the banner's height and covers it. Hide the banner while that screen is
+   active instead (toggled by goToScreen() in app.js). */
+body.is-live-call .demo-banner {
+  display: none;
+}

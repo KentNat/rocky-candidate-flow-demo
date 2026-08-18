@@ -17,9 +17,17 @@ function applyTheme(theme) {
     }
   });
   const logo = theme === 'light' ? 'assets/rocky_logo_on_light.svg' : 'assets/rocky_logo_on_dark.svg';
-  ['logo-login', 'logo-checklist', 'logo-done'].forEach((id) => {
+  ['logo-login', 'logo-done'].forEach((id) => {
     const el = document.getElementById(id);
     if (el) el.src = logo;
+  });
+  // Checklist/questionnaire screens sit on rocky-ui.css's own --card surface
+  // (light in light mode, dark elevated in dark mode) rather than the
+  // candidate app's always-dark rv-bg, so their logos need the same
+  // light/dark swap as the login/done screens -- just via a shared class
+  // since there can be more than one per screen (topbar + job-mini card).
+  document.querySelectorAll('.js-logo-swap').forEach((el) => {
+    el.src = logo;
   });
 }
 
@@ -39,6 +47,22 @@ function goToScreen(id) {
   window.scrollTo({ top: 0 });
 }
 
+/* ---------------- 4-stage journey indicator (checklist + questionnaire) ---------------- */
+const JOURNEY_STAGES = ['Persiapan', 'Pertanyaan', 'Interview', 'Selesai'];
+
+function renderJourney(containerId, activeIndex) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = JOURNEY_STAGES.map((label, i) => {
+    const state = i < activeIndex ? 'is-done' : i === activeIndex ? 'is-active' : '';
+    const sep = i < JOURNEY_STAGES.length - 1 ? '<span class="pf-journey-sep"></span>' : '';
+    return `<span class="pf-journey-step ${state}"><span class="pf-journey-dot"></span>${label}</span>${sep}`;
+  }).join('');
+}
+
+renderJourney('journey-checklist', 0);
+renderJourney('journey-questionnaire', 1);
+
 function togglePasswordVisibility() {
   const input = document.getElementById('login-password');
   const icon = document.getElementById('pw-eye-icon');
@@ -50,6 +74,55 @@ function togglePasswordVisibility() {
 function handleLogin(event) {
   event.preventDefault();
   goToScreen('screen-checklist');
+  return false;
+}
+
+/* ---------------- checklist wizard (5 equipment-check steps) ---------------- */
+const PF_STEP_COUNT = 5;
+
+function goToPfStep(step) {
+  document.querySelectorAll('.pf-step-item').forEach((item) => {
+    const n = Number(item.dataset.step);
+    item.classList.toggle('active', n === step);
+  });
+  document.querySelectorAll('.pf-step-panel').forEach((panel) => {
+    panel.classList.toggle('is-active', Number(panel.dataset.panel) === step);
+  });
+  document.getElementById('screen-checklist').scrollTop = 0;
+  const scrollEl = document.querySelector('#screen-checklist .pf-scroll');
+  if (scrollEl) scrollEl.scrollTop = 0;
+}
+
+function completePfStep(step) {
+  const item = document.querySelector(`.pf-step-item[data-step="${step}"]`);
+  if (item) item.classList.add('done');
+  if (step < PF_STEP_COUNT) {
+    goToPfStep(step + 1);
+  }
+}
+
+/* ---------------- pre-interview questionnaire (from HR) ---------------- */
+const answeredQuestions = new Set();
+const QUESTION_COUNT = 5;
+
+function onQuestionAnswered(n) {
+  const q = document.querySelector(`.pf-question[data-q="${n}"]`);
+  const value = new FormData(document.getElementById('questionnaire-form')).get(`q${n}`);
+  const isAnswered = !!(value && String(value).trim());
+  if (q) q.classList.toggle('is-answered', isAnswered);
+  if (isAnswered) answeredQuestions.add(n);
+  else answeredQuestions.delete(n);
+
+  const pct = Math.round((answeredQuestions.size / QUESTION_COUNT) * 100);
+  document.getElementById('q-progress-fill').style.width = pct + '%';
+  document.getElementById('q-progress-text').textContent = `${answeredQuestions.size} dari ${QUESTION_COUNT} terjawab`;
+  document.getElementById('q-submit-btn').disabled = answeredQuestions.size < QUESTION_COUNT;
+}
+
+function handleQuestionnaireSubmit(event) {
+  event.preventDefault();
+  if (answeredQuestions.size < QUESTION_COUNT) return false;
+  startInterview();
   return false;
 }
 

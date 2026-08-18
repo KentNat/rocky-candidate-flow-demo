@@ -82,138 +82,308 @@
     </div>
   </section>
 
-  <!-- ══════════ SCREEN 2 — PERSIAPAN (READINESS CHECKLIST) ══════════ -->
+  <!-- ══════════ SCREEN 2 — PERSIAPAN (READINESS WIZARD) ══════════ -->
   <section id="screen-checklist" class="screen">
-    <div class="rv-ambient" aria-hidden="true"></div>
-    <div class="rv-page">
-      <header class="rv-topbar">
-        <a href="#" class="rv-brand" onclick="return false">
-          <img id="logo-checklist" src="assets/rocky_logo_on_dark.svg" alt="Rocky" />
-          <span><small>AI Interview</small></span>
+    <div class="pf-shell">
+      <header class="pf-topbar">
+        <a href="#" class="pf-brand" onclick="return false">
+          <img id="logo-checklist" class="js-logo-swap" src="assets/rocky_logo_on_light.svg" alt="Rocky" />
         </a>
-        <div class="rv-topbar-right">
-          <span class="rv-topbar-meta">Halo, Sarah Amelia</span>
+        <span class="pf-topbar-title">Persiapan Interview</span>
+        <div class="pf-topbar-right">
+          <div class="pf-journey" id="journey-checklist"></div>
           <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
             <i class="theme-icon-mirror fa-solid fa-moon"></i>
           </button>
-          <a href="#" class="rv-btn-logout" onclick="goToScreen('screen-login'); return false">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
-          </a>
+          <a href="#" class="pf-exit" onclick="goToScreen('screen-login'); return false">Keluar</a>
         </div>
       </header>
 
-      <div class="rv-lobby">
-        <aside class="rv-job-panel">
-          <div class="rv-job-card">
-            <div class="rv-job-hero">
-              <div class="rv-job-logos">
-                <img src="assets/rocky_logo_on_dark.svg" alt="Rocky" class="rocky-mini" />
-              </div>
-              <h1>PT Cakra Tekno Nusantara</h1>
-              <p class="position">Python Developer</p>
+      <div class="pf-body">
+        <div class="pf-stepper-col">
+          <div class="pf-job-mini card">
+            <img class="js-logo-swap" src="assets/rocky_logo_on_light.svg" alt="Rocky" />
+            <h4>PT Cakra Tekno Nusantara</h4>
+            <p>Python Developer</p>
+            <div class="pf-job-mini-meta">
+              <span><i class="fa-regular fa-calendar-days"></i> 16 Agu 2026</span>
+              <span><i class="fa-regular fa-clock"></i> 60 menit</span>
             </div>
-            <div class="rv-job-body">
-              <div class="rv-stat-grid">
-                <div class="rv-stat">
-                  <i class="fa-regular fa-calendar-days stat-icon"></i>
-                  <div class="stat-info">
-                    <label>Tanggal</label>
-                    <span id="checklist-date">16 Agu 2026</span>
-                  </div>
+          </div>
+
+          <nav class="pf-stepper" id="pf-stepper">
+            <div class="pf-step-item active" data-step="1">
+              <button type="button" class="pf-step-btn" onclick="goToPfStep(1)">
+                <span class="pf-step-dot">1</span>
+                <span class="pf-step-label">Perangkat &amp; Kamera</span>
+              </button>
+            </div>
+            <div class="pf-step-item" data-step="2">
+              <button type="button" class="pf-step-btn" onclick="goToPfStep(2)">
+                <span class="pf-step-dot">2</span>
+                <span class="pf-step-label">Lingkungan Tenang</span>
+              </button>
+            </div>
+            <div class="pf-step-item" data-step="3">
+              <button type="button" class="pf-step-btn" onclick="goToPfStep(3)">
+                <span class="pf-step-dot">3</span>
+                <span class="pf-step-label">Koneksi Internet</span>
+              </button>
+            </div>
+            <div class="pf-step-item" data-step="4">
+              <button type="button" class="pf-step-btn" onclick="goToPfStep(4)">
+                <span class="pf-step-dot">4</span>
+                <span class="pf-step-label">Cara Menjawab</span>
+              </button>
+            </div>
+            <div class="pf-step-item" data-step="5">
+              <button type="button" class="pf-step-btn" onclick="goToPfStep(5)">
+                <span class="pf-step-dot">5</span>
+                <span class="pf-step-label">Siap Mulai</span>
+              </button>
+            </div>
+          </nav>
+        </div>
+
+        <div class="pf-scroll">
+          <div class="pf-content">
+
+            <!-- Step 1 -->
+            <div class="pf-step-panel is-active" data-panel="1">
+              <h2>Perangkat &amp; kamera</h2>
+              <p class="pf-sub">Rocky akan memverifikasi perangkat, kamera, dan mikrofon Anda sebelum interview dimulai.</p>
+
+              <div class="pf-check-card">
+                <div class="pf-check-icon"><i class="fa-solid fa-laptop"></i></div>
+                <div class="pf-check-copy">
+                  <h3>Perangkat terverifikasi</h3>
+                  <p>Anda menggunakan laptop/desktop — perangkat yang didukung untuk sesi interview ini.</p>
                 </div>
-                <div class="rv-stat">
-                  <i class="fa-regular fa-clock stat-icon"></i>
-                  <div class="stat-info">
-                    <label>Durasi</label>
-                    <span>60 menit</span>
-                  </div>
+              </div>
+
+              <div class="pf-webcam-box">
+                <i class="fa-solid fa-video"></i>
+                <span>Pratinjau kamera akan tampil di sini</span>
+              </div>
+
+              <div class="pf-check-card">
+                <div class="pf-check-icon"><i class="fa-solid fa-microphone"></i></div>
+                <div class="pf-check-copy">
+                  <h3>Kamera &amp; mikrofon siap</h3>
+                  <p>Pastikan Anda mengizinkan akses kamera, mikrofon, dan berbagi seluruh layar (Entire Screen) saat diminta browser.</p>
                 </div>
               </div>
 
-              <div class="rv-stepper">
-                <div class="rv-step is-active">
-                  <div class="num">1</div>
-                  <div class="label">Persiapan</div>
+              <div class="pf-actions">
+                <button type="button" class="pf-btn-back" disabled>Kembali</button>
+                <button type="button" class="pf-btn-next" onclick="completePfStep(1)">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="pf-step-panel" data-panel="2">
+              <h2>Lingkungan tenang</h2>
+              <p class="pf-sub">Ruangan yang tenang membantu Rocky mendengar jawaban Anda dengan jelas.</p>
+
+              <div class="pf-check-card">
+                <div class="pf-check-icon"><i class="fa-solid fa-volume-high"></i></div>
+                <div class="pf-check-copy">
+                  <h3>Level kebisingan ruangan</h3>
+                  <p>Cari ruangan tertutup, hindari kipas angin/AC yang berisik, dan minta orang di sekitar untuk tidak mengganggu selama interview.</p>
                 </div>
-                <div class="rv-step">
-                  <div class="num">2</div>
-                  <div class="label">Interview</div>
+              </div>
+
+              <div class="pf-metric-row">
+                <div class="pf-metric"><label>Kebisingan</label><span>Rendah</span></div>
+                <div class="pf-metric"><label>Status</label><span style="color:var(--green-tx)">Baik</span></div>
+                <div class="pf-metric"><label>Estimasi</label><span>32 dB</span></div>
+              </div>
+
+              <div class="pf-actions">
+                <button type="button" class="pf-btn-back" onclick="goToPfStep(1)">Kembali</button>
+                <button type="button" class="pf-btn-next" onclick="completePfStep(2)">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="pf-step-panel" data-panel="3">
+              <h2>Koneksi internet</h2>
+              <p class="pf-sub">Koneksi yang stabil memastikan interview berjalan tanpa putus-putus.</p>
+
+              <div class="pf-metric-row">
+                <div class="pf-metric"><label>Download</label><span>48 Mbps</span></div>
+                <div class="pf-metric"><label>Upload</label><span>22 Mbps</span></div>
+                <div class="pf-metric"><label>Ping</label><span>18 ms</span></div>
+              </div>
+
+              <div class="pf-check-card">
+                <div class="pf-check-icon"><i class="fa-solid fa-wifi"></i></div>
+                <div class="pf-check-copy">
+                  <h3>Koneksi stabil</h3>
+                  <p>Kecepatan dan latensi Anda sudah mencukupi untuk sesi video interview.</p>
                 </div>
-                <div class="rv-step">
-                  <div class="num">3</div>
-                  <div class="label">Selesai</div>
+              </div>
+
+              <div class="pf-actions">
+                <button type="button" class="pf-btn-back" onclick="goToPfStep(2)">Kembali</button>
+                <button type="button" class="pf-btn-next" onclick="completePfStep(3)">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="pf-step-panel" data-panel="4">
+              <h2>Cara menjawab</h2>
+              <p class="pf-sub">Interview ini berbasis suara — begini alurnya setiap kali Rocky bertanya.</p>
+
+              <div class="pf-how-row">
+                <div class="pf-how-step">
+                  <i class="fa-solid fa-comment-dots"></i>
+                  <span>Rocky bertanya</span>
+                </div>
+                <div class="pf-how-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="pf-how-step">
+                  <i class="fa-solid fa-microphone"></i>
+                  <span>Klik mic &amp; jawab</span>
+                </div>
+                <div class="pf-how-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="pf-how-step">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Kirim jawaban</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </aside>
 
-        <section class="rv-ready-panel">
-          <h2>Persiapan singkat</h2>
-          <p>Selesaikan persiapan langkah demi langkah di bawah ini untuk memulai interview. Rocky akan memandu Anda.</p>
+              <div class="pf-check-card">
+                <div class="pf-check-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="pf-check-copy">
+                  <h3>Tips menjawab</h3>
+                  <p>Jawab dengan jelas dan ringkas. Berpikir sebentar sebelum menjawab akan membantumu memberikan jawaban terbaik.</p>
+                </div>
+              </div>
 
-          <div class="rv-ready-item is-auto">
-            <div class="rv-ready-item-header">
-              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
-              <div class="rv-ready-icon"><i class="fa-solid fa-laptop"></i></div>
-              <div class="rv-ready-copy">
-                <h3>Laptop / desktop</h3>
-                <p style="color:#10B981;font-weight:600">Perangkat Terverifikasi (Laptop/Desktop)</p>
+              <div class="pf-actions">
+                <button type="button" class="pf-btn-back" onclick="goToPfStep(3)">Kembali</button>
+                <button type="button" class="pf-btn-next" onclick="completePfStep(4)">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
-          </div>
 
-          <div class="rv-ready-item is-auto">
-            <div class="rv-ready-item-header">
-              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
-              <div class="rv-ready-icon"><i class="fa-solid fa-video"></i></div>
-              <div class="rv-ready-copy">
-                <h3>Kamera, mikrofon &amp; layar siap</h3>
-                <p>Saya siap mengizinkan akses kamera, mikrofon, dan membagikan seluruh layar (Entire Screen).</p>
+            <!-- Step 5 -->
+            <div class="pf-step-panel" data-panel="5">
+              <h2>Siap mulai</h2>
+              <p class="pf-sub">Semua pemeriksaan sudah selesai.</p>
+
+              <div class="pf-summary-card">
+                <i class="fa-solid fa-circle-check"></i>
+                <div>
+                  <h3>Semua langkah selesai</h3>
+                  <p>Perangkat, lingkungan, dan koneksi Anda sudah siap untuk interview.</p>
+                </div>
+              </div>
+
+              <p class="pf-sub" style="margin-bottom:0">
+                Selanjutnya Anda akan menjawab beberapa pertanyaan singkat yang telah disiapkan oleh tim HR,
+                sebelum masuk ke sesi interview dengan Rocky.
+              </p>
+
+              <div class="pf-actions">
+                <button type="button" class="pf-btn-back" onclick="goToPfStep(4)">Kembali</button>
+                <button type="button" class="pf-btn-next" onclick="goToScreen('screen-questionnaire')">
+                  Lanjut ke Pertanyaan <i class="fa-solid fa-arrow-right"></i>
+                </button>
               </div>
             </div>
-          </div>
 
-          <div class="rv-ready-item is-auto">
-            <div class="rv-ready-item-header">
-              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
-              <div class="rv-ready-icon"><i class="fa-solid fa-volume-high"></i></div>
-              <div class="rv-ready-copy">
-                <h3>Lingkungan tenang</h3>
-                <p>Saya berada di ruangan yang cukup sunyi tanpa gangguan suara.</p>
-              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SCREEN 3 — PERTANYAAN PRA-INTERVIEW (DARI HR) ══════════ -->
+  <section id="screen-questionnaire" class="screen">
+    <div class="pf-shell">
+      <header class="pf-topbar">
+        <a href="#" class="pf-brand" onclick="return false">
+          <img id="logo-questionnaire" class="js-logo-swap" src="assets/rocky_logo_on_light.svg" alt="Rocky" />
+        </a>
+        <span class="pf-topbar-title">Pertanyaan Pra-Interview</span>
+        <div class="pf-topbar-right">
+          <div class="pf-journey" id="journey-questionnaire"></div>
+          <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
+            <i class="theme-icon-mirror fa-solid fa-moon"></i>
+          </button>
+          <a href="#" class="pf-exit" onclick="goToScreen('screen-checklist'); return false">Kembali</a>
+        </div>
+      </header>
+
+      <div class="pf-body">
+        <div class="pf-scroll" style="flex:1">
+          <div class="pf-content" style="max-width:680px">
+            <h2>Beberapa pertanyaan sebelum mulai</h2>
+            <p class="pf-sub">Jawaban Anda akan dilampirkan pada profil interview untuk ditinjau tim rekrutmen.</p>
+
+            <div class="pf-hr-note">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>Pertanyaan berikut disiapkan oleh tim HR <strong>PT Cakra Tekno Nusantara</strong> khusus untuk posisi <strong>Python Developer</strong>. Jawab semua pertanyaan untuk melanjutkan ke sesi interview.</span>
             </div>
-          </div>
 
-          <div class="rv-ready-item is-auto">
-            <div class="rv-ready-item-header">
-              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
-              <div class="rv-ready-icon"><i class="fa-solid fa-wifi"></i></div>
-              <div class="rv-ready-copy">
-                <h3>Koneksi internet stabil</h3>
-                <p>Menguji kecepatan koneksi internet dan kestabilan ping Anda.</p>
-              </div>
+            <div class="pf-q-progress">
+              <div class="pf-q-progress-track"><div class="pf-q-progress-fill" id="q-progress-fill" style="width:0%"></div></div>
+              <span class="pf-q-progress-text" id="q-progress-text">0 dari 5 terjawab</span>
             </div>
-          </div>
 
-          <div class="rv-ready-item is-auto">
-            <div class="rv-ready-item-header">
-              <div class="rv-ready-check"><i class="fa-solid fa-check"></i></div>
-              <div class="rv-ready-icon"><i class="fa-solid fa-paper-plane"></i></div>
-              <div class="rv-ready-copy">
-                <h3>Cara menjawab (Uji Coba)</h3>
-                <p>Pelajari alur interview Rocky langkah demi langkah, lalu coba praktik langsung.</p>
+            <form id="questionnaire-form" onsubmit="return handleQuestionnaireSubmit(event)">
+
+              <div class="pf-question" data-q="1">
+                <label class="pf-question-label"><span class="pf-question-num">1</span> Apakah Anda memiliki pengalaman kerja sebagai Python Developer sebelumnya?</label>
+                <div class="radio-cards">
+                  <label class="radio-card"><input type="radio" name="q1" value="ya" onchange="onQuestionAnswered(1)"> Ya</label>
+                  <label class="radio-card"><input type="radio" name="q1" value="tidak" onchange="onQuestionAnswered(1)"> Tidak</label>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="rv-cta-wrap">
-            <button type="button" class="rv-btn rv-btn-primary" onclick="startInterview()">
-              Lanjutkan Interview
-            </button>
-            <p class="rv-cta-hint">Semua langkah selesai — Anda siap memulai interview.</p>
+              <div class="pf-question" data-q="2">
+                <label class="pf-question-label"><span class="pf-question-num">2</span> Berapa lama pengalaman Anda di bidang software development?</label>
+                <div class="radio-cards">
+                  <label class="radio-card"><input type="radio" name="q2" value="<1" onchange="onQuestionAnswered(2)"> &lt; 1 tahun</label>
+                  <label class="radio-card"><input type="radio" name="q2" value="1-3" onchange="onQuestionAnswered(2)"> 1–3 tahun</label>
+                  <label class="radio-card"><input type="radio" name="q2" value="3-5" onchange="onQuestionAnswered(2)"> 3–5 tahun</label>
+                  <label class="radio-card"><input type="radio" name="q2" value="5+" onchange="onQuestionAnswered(2)"> 5+ tahun</label>
+                </div>
+              </div>
+
+              <div class="pf-question" data-q="3">
+                <label class="pf-question-label"><span class="pf-question-num">3</span> Kapan Anda bisa mulai bekerja jika diterima?</label>
+                <div class="radio-cards">
+                  <label class="radio-card"><input type="radio" name="q3" value="segera" onchange="onQuestionAnswered(3)"> Segera</label>
+                  <label class="radio-card"><input type="radio" name="q3" value="2minggu" onchange="onQuestionAnswered(3)"> 2 minggu</label>
+                  <label class="radio-card"><input type="radio" name="q3" value="1bulan" onchange="onQuestionAnswered(3)"> 1 bulan</label>
+                  <label class="radio-card"><input type="radio" name="q3" value=">1bulan" onchange="onQuestionAnswered(3)"> &gt; 1 bulan</label>
+                </div>
+              </div>
+
+              <div class="pf-question" data-q="4">
+                <label class="pf-question-label"><span class="pf-question-num">4</span> Berapa ekspektasi gaji Anda untuk posisi ini? (Rp/bulan)</label>
+                <div class="field" style="margin-bottom:0">
+                  <input type="text" name="q4" placeholder="Contoh: 12.000.000" oninput="onQuestionAnswered(4)" />
+                </div>
+              </div>
+
+              <div class="pf-question" data-q="5">
+                <label class="pf-question-label"><span class="pf-question-num">5</span> Ceritakan singkat mengapa Anda tertarik dengan posisi ini.</label>
+                <div class="field" style="margin-bottom:0">
+                  <textarea name="q5" placeholder="Tulis jawaban Anda di sini…" oninput="onQuestionAnswered(5)"></textarea>
+                </div>
+              </div>
+
+              <div class="pf-actions">
+                <button type="button" class="pf-btn-back" onclick="goToScreen('screen-checklist')">Kembali</button>
+                <button type="submit" class="pf-btn-next" id="q-submit-btn" disabled>
+                  Lanjut ke Interview <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </form>
           </div>
-        </section>
+        </div>
       </div>
     </div>
 
@@ -396,10 +566,14 @@
                 </div>
                 <div class="rv-step is-done">
                   <div class="num">2</div>
+                  <div class="label">Pertanyaan <i class="fa-solid fa-circle-check step-check-icon"></i></div>
+                </div>
+                <div class="rv-step is-done">
+                  <div class="num">3</div>
                   <div class="label">Interview <i class="fa-solid fa-circle-check step-check-icon"></i></div>
                 </div>
                 <div class="rv-step is-active">
-                  <div class="num">3</div>
+                  <div class="num">4</div>
                   <div class="label">Selesai</div>
                 </div>
               </div>

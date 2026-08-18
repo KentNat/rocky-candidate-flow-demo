@@ -98,7 +98,28 @@ body.is-live-call .demo-banner {
   background: var(--card);
   border-bottom: 1px solid var(--line);
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
+
+.pf-q-timer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--slate-bg);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 12.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.pf-q-timer[hidden] { display: none; }
+
+.pf-q-timer i { color: var(--blue-600); }
 
 .pf-brand {
   display: flex;
@@ -468,6 +489,78 @@ body.is-live-call .demo-banner {
   font-size: 0.85rem;
 }
 
+.pf-video-ref {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius, 8px);
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.pf-video-ref-player {
+  position: relative;
+  flex-shrink: 0;
+  width: 160px;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  background: linear-gradient(155deg, #16283a 0%, #0b1420 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf-video-ref-play {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.pf-video-ref-play:hover {
+  background: var(--blue-600);
+}
+
+.pf-video-ref-duration {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.pf-video-ref-copy h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pf-video-ref-copy h3 i { color: var(--blue-600); }
+
+.pf-video-ref-copy p {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
 .pf-summary-card {
   display: flex;
   align-items: center;
@@ -620,4 +713,139 @@ body.is-live-call .demo-banner {
   .pf-step-item { flex-direction: column; padding-bottom: 0; padding-right: 20px; min-width: 90px; }
   .pf-step-item::before { display: none; }
   .pf-job-mini { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   Live interview call — light/dark theming.
+   interview_revamp.css hardcodes literal dark colors throughout (it was
+   never given a light theme in the real app -- a deliberate call there,
+   since the call surface stayed fixed dark like Zoom/Meet). This demo
+   explicitly wants a light option here too, so every structural chrome
+   color used in this screen's markup is re-pointed at --il-* tokens
+   (defaulting to the original dark values) with a light override block.
+   The video tile, bot-card overlay chip, and semantic/status colors
+   (green ready state, red LIVE dot, amber tips) are deliberately left
+   as-is in both themes -- they read as camera/status chrome, not surface
+   color, the same way a video-call app's own dark video tile doesn't
+   flip with OS theme. ══════════════════════════════════════════════ */
+
+.r5-layout-dashboard {
+  --il-bg: #0b1420;
+  --il-text: #eef3f8;
+  --il-header-bg: rgba(11, 18, 32, 0.92);
+  --il-header-border: rgba(255, 255, 255, 0.06);
+  --il-job-title: #eef3f8;
+  --il-job-sep: rgba(148, 163, 184, 0.7);
+  --il-job-company: rgba(203, 213, 225, 0.88);
+  --il-badge-text: #a9d3da;
+  --il-pill-bg: rgba(30, 41, 59, 0.9);
+  --il-pill-border: rgba(255, 255, 255, 0.1);
+  --il-pill-text: #c3ceda;
+  --il-panel-bg: rgba(13, 20, 35, 0.88);
+  --il-panel-border: rgba(255, 255, 255, 0.07);
+  --il-glyph-text: #a9d3da;
+  --il-transcript-title: #c3ceda;
+  --il-foot-bg: rgba(8, 12, 22, 0.45);
+  --il-foot-border: rgba(255, 255, 255, 0.06);
+  --il-foot-note: #8fa0b8;
+  --il-control-bg: rgba(15, 23, 42, 0.6);
+  --il-control-border: rgba(255, 255, 255, 0.08);
+  --il-turn-title: #eef3f8;
+  --il-turn-sub: #8fa0b8;
+  --il-mic-cta: #8fa0b8;
+  --il-tips-bg: rgba(255, 255, 255, 0.03);
+  --il-tips-border: rgba(255, 255, 255, 0.06);
+  --il-tips-text: #8fa0b8;
+
+  background: var(--il-bg);
+  color: var(--il-text);
+}
+
+[data-theme='light'] .r5-layout-dashboard {
+  --il-bg: #f2f4f7;
+  --il-text: #061d3c;
+  --il-header-bg: rgba(255, 255, 255, 0.92);
+  --il-header-border: rgba(6, 29, 60, 0.08);
+  --il-job-title: #061d3c;
+  --il-job-sep: rgba(91, 107, 133, 0.6);
+  --il-job-company: rgba(51, 70, 94, 0.85);
+  --il-badge-text: #256e85;
+  --il-pill-bg: #ffffff;
+  --il-pill-border: rgba(6, 29, 60, 0.12);
+  --il-pill-text: #33465e;
+  --il-panel-bg: #ffffff;
+  --il-panel-border: rgba(6, 29, 60, 0.1);
+  --il-glyph-text: #256e85;
+  --il-transcript-title: #33465e;
+  --il-foot-bg: rgba(6, 29, 60, 0.03);
+  --il-foot-border: rgba(6, 29, 60, 0.08);
+  --il-foot-note: #5b6b85;
+  --il-control-bg: rgba(255, 255, 255, 0.85);
+  --il-control-border: rgba(6, 29, 60, 0.08);
+  --il-turn-title: #061d3c;
+  --il-turn-sub: #5b6b85;
+  --il-mic-cta: #5b6b85;
+  --il-tips-bg: rgba(6, 29, 60, 0.03);
+  --il-tips-border: rgba(6, 29, 60, 0.08);
+  --il-tips-text: #5b6b85;
+}
+
+.r5-layout-dashboard .r5-app {
+  background: var(--il-bg);
+}
+
+.r5-layout-dashboard .r5-hud-header {
+  background: var(--il-header-bg);
+  border-bottom: 1px solid var(--il-header-border);
+}
+
+.r5-layout-dashboard .r5-hud-brand-name { color: var(--il-text); }
+.r5-layout-dashboard .r5-job-title { color: var(--il-job-title); }
+.r5-layout-dashboard .r5-job-sep { color: var(--il-job-sep); }
+.r5-layout-dashboard .r5-job-company { color: var(--il-job-company); }
+.r5-layout-dashboard .r5-hud-badge { color: var(--il-badge-text); }
+
+.r5-layout-dashboard .r5-timer-pill,
+.r5-layout-dashboard .r5-status-pill {
+  background: var(--il-pill-bg);
+  border-color: var(--il-pill-border);
+  color: var(--il-pill-text);
+}
+
+.r5-layout-dashboard .r5-transcript {
+  background: var(--il-panel-bg);
+  border-color: var(--il-panel-border);
+}
+
+.r5-layout-dashboard .r5-transcript-glyph { color: var(--il-glyph-text); }
+.r5-layout-dashboard .r5-transcript-title { color: var(--il-transcript-title); }
+
+.r5-layout-dashboard .r5-transcript-foot {
+  background: var(--il-foot-bg);
+  border-top: 1px solid var(--il-foot-border);
+}
+
+.r5-layout-dashboard .r5-transcript-foot-note { color: var(--il-foot-note); }
+
+.r5-layout-dashboard .demo-control-bar {
+  background: var(--il-control-bg);
+  border-top: 1px solid var(--il-control-border);
+}
+
+.r5-layout-dashboard .r5-turn-title { color: var(--il-turn-title); }
+.r5-layout-dashboard .r5-turn-sub { color: var(--il-turn-sub); }
+.r5-layout-dashboard .r5-mic-cta { color: var(--il-mic-cta); }
+
+.r5-layout-dashboard .demo-tips-panel {
+  background: var(--il-tips-bg);
+  border: 1px solid var(--il-tips-border);
+}
+
+.r5-layout-dashboard .demo-tips-text { color: var(--il-tips-text); }
+
+/* Video tile and camera placeholder deliberately stay dark in both themes
+   (a camera surface, not page chrome) -- only lighten its idle-state
+   border slightly so it doesn't look like a stray black box on a white page. */
+[data-theme='light'] .r5-layout-dashboard .r5-video-panel {
+  border-color: rgba(6, 29, 60, 0.12);
 }

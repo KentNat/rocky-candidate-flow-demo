@@ -252,6 +252,19 @@
                 </div>
               </div>
 
+              <div class="pf-video-ref">
+                <div class="pf-video-ref-player">
+                  <button type="button" class="pf-video-ref-play" aria-label="Putar video tutorial">
+                    <i class="fa-solid fa-play"></i>
+                  </button>
+                  <span class="pf-video-ref-duration">1:24</span>
+                </div>
+                <div class="pf-video-ref-copy">
+                  <h3><i class="fa-solid fa-circle-play"></i> Video tutorial: cara menjawab</h3>
+                  <p>Tonton contoh singkat alur tanya-jawab dengan Rocky sebelum memulai interview sesungguhnya.</p>
+                </div>
+              </div>
+
               <div class="pf-check-card">
                 <div class="pf-check-icon"><i class="fa-solid fa-lightbulb"></i></div>
                 <div class="pf-check-copy">
@@ -308,6 +321,10 @@
         <span class="pf-topbar-title">Pertanyaan Pra-Interview</span>
         <div class="pf-topbar-right">
           <div class="pf-journey" id="journey-questionnaire"></div>
+          <div class="pf-q-timer" id="q-timer" hidden>
+            <i class="fa-regular fa-clock"></i>
+            <span id="q-timer-text">00:00</span>
+          </div>
           <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
             <i class="theme-icon-mirror fa-solid fa-moon"></i>
           </button>
@@ -402,11 +419,11 @@
 
   <!-- ══════════ SCREEN 3 — LIVE INTERVIEW CALL ══════════ -->
   <section id="screen-interview" class="screen">
-    <div class="r5-layout-dashboard" style="background:#0b1420;min-height:100vh;color:#fff">
+    <div class="r5-layout-dashboard" style="min-height:100vh">
       <div class="r5-app">
         <header class="r5-hud-header">
           <div class="r5-hud-brand">
-            <img src="assets/rocky_logo_on_dark.svg" alt="Allham" style="width:auto;height:22px;margin-right:8px" />
+            <img src="assets/rocky_logo_on_dark.svg" alt="Allham" class="js-logo-swap" style="width:auto;height:22px;margin-right:8px" />
             <span class="r5-hud-brand-name">Allham</span>
             <span class="r5-hud-badge">AI Interview</span>
           </div>
@@ -424,6 +441,9 @@
               <i class="fa-solid fa-circle" style="color:#ef4444;margin-right:6px;font-size:9px"></i>
               <span>LIVE</span>
             </div>
+            <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
+              <i class="theme-icon-mirror fa-solid fa-moon"></i>
+            </button>
           </div>
         </header>
 
@@ -463,7 +483,7 @@
               </div>
             </div>
 
-            <div class="r5-control-bar" style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;padding:16px 24px;align-items:center;background:rgba(15,23,42,0.6);border-top:1px solid rgba(255,255,255,0.08)">
+            <div class="r5-control-bar demo-control-bar" style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;padding:16px 24px;align-items:center">
               <div class="r5-turn-status state-user" id="turn-status">
                 <span class="r5-turn-ring" id="turn-dot" style="background:#10b981"></span>
                 <div class="r5-turn-copy">
@@ -486,12 +506,12 @@
                 <p class="r5-mic-cta is-visible" id="mic-cta">Klik untuk menjawab (simulasi)</p>
               </div>
 
-              <aside class="r5-tips-panel" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:10px 14px">
-                <div class="r5-tips-head" style="color:#f59e0b;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;margin-bottom:4px">
+              <aside class="r5-tips-panel demo-tips-panel" style="border-radius:12px;padding:10px 14px">
+                <div class="r5-tips-head demo-tips-head" style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;margin-bottom:4px">
                   <i class="fa-solid fa-lightbulb"></i>
                   <span>Tips</span>
                 </div>
-                <p class="r5-tips-text" style="font-size:11px;color:#8fa0b8;margin:0;line-height:1.45">
+                <p class="r5-tips-text demo-tips-text" style="font-size:11px;margin:0;line-height:1.45">
                   Jawab dengan jelas dan ringkas. Berpikir sebelum menjawab akan membantumu memberikan jawaban terbaik.
                 </p>
               </aside>

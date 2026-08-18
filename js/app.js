@@ -41,9 +41,12 @@ applyTheme(currentTheme());
 
 /* ---------------- screen navigation ---------------- */
 function goToScreen(id) {
+  const leavingQuestionnaire = document.getElementById('screen-questionnaire').classList.contains('is-active') && id !== 'screen-questionnaire';
   document.querySelectorAll('.screen').forEach((s) => s.classList.remove('is-active'));
   document.getElementById(id).classList.add('is-active');
   document.body.classList.toggle('is-live-call', id === 'screen-interview');
+  if (id === 'screen-questionnaire') resetQuestionnaireTimer();
+  if (leavingQuestionnaire) stopQuestionnaireTimer();
   window.scrollTo({ top: 0 });
 }
 
@@ -104,6 +107,35 @@ function completePfStep(step) {
 /* ---------------- pre-interview questionnaire (from HR) ---------------- */
 const answeredQuestions = new Set();
 const QUESTION_COUNT = 5;
+let qTimerInterval = null;
+let qTimerSeconds = 0;
+
+function startQuestionnaireTimer() {
+  if (qTimerInterval) return; // already running
+  const el = document.getElementById('q-timer');
+  el.hidden = false;
+  qTimerSeconds = 0;
+  qTimerInterval = setInterval(() => {
+    qTimerSeconds += 1;
+    const m = Math.floor(qTimerSeconds / 60);
+    const s = qTimerSeconds % 60;
+    document.getElementById('q-timer-text').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  }, 1000);
+}
+
+function stopQuestionnaireTimer() {
+  clearInterval(qTimerInterval);
+  qTimerInterval = null;
+}
+
+function resetQuestionnaireTimer() {
+  stopQuestionnaireTimer();
+  qTimerSeconds = 0;
+  const el = document.getElementById('q-timer');
+  if (el) el.hidden = true;
+  const text = document.getElementById('q-timer-text');
+  if (text) text.textContent = '00:00';
+}
 
 function onQuestionAnswered(n) {
   const q = document.querySelector(`.pf-question[data-q="${n}"]`);
@@ -112,6 +144,8 @@ function onQuestionAnswered(n) {
   if (q) q.classList.toggle('is-answered', isAnswered);
   if (isAnswered) answeredQuestions.add(n);
   else answeredQuestions.delete(n);
+
+  if (answeredQuestions.size > 0) startQuestionnaireTimer();
 
   const pct = Math.round((answeredQuestions.size / QUESTION_COUNT) * 100);
   document.getElementById('q-progress-fill').style.width = pct + '%';
@@ -122,6 +156,7 @@ function onQuestionAnswered(n) {
 function handleQuestionnaireSubmit(event) {
   event.preventDefault();
   if (answeredQuestions.size < QUESTION_COUNT) return false;
+  stopQuestionnaireTimer();
   startInterview();
   return false;
 }
@@ -195,17 +230,20 @@ function startLiveCallSimulation() {
 }
 
 function chatBubble(speaker, text) {
+  // Reuses the same .rv-timeline-* classes as the Selesai screen (no inline
+  // colors) so these bubbles pick up --rv-text/--rv-accent/--rv-success,
+  // which already flip correctly with the light/dark toggle.
   const isBot = speaker === 'bot';
   const wrap = document.createElement('div');
   wrap.className = `rv-timeline-item ${isBot ? 'bot' : 'candidate'}`;
   wrap.style.cssText = 'display:flex;gap:10px;margin-bottom:14px';
   wrap.innerHTML = `
-    <div class="rv-timeline-bubble" style="background:${isBot ? 'rgba(255,255,255,0.05)' : 'rgba(59,130,246,0.15)'};border:1px solid ${isBot ? 'rgba(255,255,255,0.1)' : 'rgba(59,130,246,0.2)'};padding:10px 14px;border-radius:12px;flex:1">
-      <div class="rv-timeline-bubble-header" style="display:flex;justify-content:space-between;font-size:11px;color:#8fa0b8;margin-bottom:4px">
-        <span class="rv-timeline-name" style="font-weight:600">${isBot ? 'Allham' : 'Anda'}</span>
-        <span class="rv-timeline-badge ${isBot ? 'interviewer' : 'candidate'}" style="color:${isBot ? '#2f7fa6' : '#10b981'};font-weight:700">${isBot ? 'INTERVIEWER' : 'KANDIDAT'}</span>
+    <div class="rv-timeline-bubble" style="flex:1">
+      <div class="rv-timeline-bubble-header">
+        <span class="rv-timeline-name">${isBot ? 'Allham' : 'Anda'}</span>
+        <span class="rv-timeline-badge ${isBot ? 'interviewer' : 'candidate'}">${isBot ? 'INTERVIEWER' : 'KANDIDAT'}</span>
       </div>
-      <p class="rv-timeline-text" style="font-size:13px;line-height:1.5;margin:0">${text}</p>
+      <p class="rv-timeline-text">${text}</p>
     </div>`;
   return wrap;
 }

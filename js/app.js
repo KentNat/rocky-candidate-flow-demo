@@ -39,6 +39,24 @@ function toggleTheme() {
 
 applyTheme(currentTheme());
 
+/* ---------------- live-call mic/speaker toggles ---------------- */
+let hudMicOn = true;
+let hudSpeakerOn = true;
+function toggleHudMic() {
+  hudMicOn = !hudMicOn;
+  const btn = document.getElementById('hud-mic-toggle');
+  btn.classList.toggle('is-off', !hudMicOn);
+  btn.querySelector('i').className = hudMicOn ? 'fa-solid fa-microphone' : 'fa-solid fa-microphone-slash';
+  btn.setAttribute('aria-label', hudMicOn ? 'Matikan mikrofon' : 'Nyalakan mikrofon');
+}
+function toggleHudSpeaker() {
+  hudSpeakerOn = !hudSpeakerOn;
+  const btn = document.getElementById('hud-speaker-toggle');
+  btn.classList.toggle('is-off', !hudSpeakerOn);
+  btn.querySelector('i').className = hudSpeakerOn ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+  btn.setAttribute('aria-label', hudSpeakerOn ? 'Matikan speaker' : 'Nyalakan speaker');
+}
+
 /* ---------------- screen navigation ---------------- */
 function goToScreen(id) {
   const leavingQuestionnaire = document.getElementById('screen-questionnaire').classList.contains('is-active') && id !== 'screen-questionnaire';

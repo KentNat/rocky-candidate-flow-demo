@@ -14,6 +14,36 @@
   display: block;
 }
 
+/* Mic/speaker mute toggles in the live-call HUD -- distinct from the main
+   answer/record mic button in the control bar below, which is the
+   push-to-talk interaction; these are the persistent on/off audio-device
+   controls a real call UI (Zoom/Meet-style) always keeps visible. */
+.r5-av-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--rv-border);
+  background: var(--rv-surface);
+  color: var(--rv-text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.r5-av-toggle:hover {
+  background: var(--rv-surface-hover);
+  color: var(--rv-text);
+}
+
+.r5-av-toggle.is-off {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
 /* Placeholder "your camera" panel -- no real getUserMedia in a static demo */
 .demo-cam-placeholder {
   width: 100%;

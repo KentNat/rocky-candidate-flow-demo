@@ -142,7 +142,7 @@ body.is-live-call .demo-banner {
   background: var(--slate-bg);
   border: 1px solid var(--line);
   color: var(--ink-2);
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
@@ -269,7 +269,7 @@ body.is-live-call .demo-banner {
 }
 
 .pf-job-mini p {
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--muted);
   margin: 0 0 10px;
 }
@@ -370,7 +370,7 @@ body.is-live-call .demo-banner {
 }
 
 .pf-step-label {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--faint);
   padding-top: 2px;
@@ -391,7 +391,7 @@ body.is-live-call .demo-banner {
 }
 
 .pf-content .pf-sub {
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--muted);
   margin-bottom: 24px;
   line-height: 1.6;
@@ -428,7 +428,7 @@ body.is-live-call .demo-banner {
 }
 
 .pf-check-copy p {
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.55;
   margin: 0;
@@ -451,7 +451,7 @@ body.is-live-call .demo-banner {
 
 .pf-metric label {
   display: block;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -481,7 +481,7 @@ body.is-live-call .demo-banner {
 }
 
 .pf-webcam-box i { font-size: 1.8rem; }
-.pf-webcam-box span { font-size: 11.5px; font-weight: 600; }
+.pf-webcam-box span { font-size: 12px; font-weight: 600; }
 
 .pf-how-row {
   display: flex;
@@ -507,7 +507,7 @@ body.is-live-call .demo-banner {
 }
 
 .pf-how-step span {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--ink-2);
   display: block;
@@ -585,7 +585,7 @@ body.is-live-call .demo-banner {
 .pf-video-ref-copy h3 i { color: var(--blue-600); }
 
 .pf-video-ref-copy p {
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.5;
   margin: 0;
@@ -615,7 +615,7 @@ body.is-live-call .demo-banner {
 }
 
 .pf-summary-card p {
-  font-size: 12.5px;
+  font-size: 12px;
   color: var(--ink-2);
   margin: 0;
 }
@@ -628,35 +628,6 @@ body.is-live-call .demo-banner {
   padding-top: 20px;
   border-top: 1px solid var(--line);
 }
-
-.pf-btn-back {
-  background: none;
-  border: none;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 8px 4px;
-}
-
-.pf-btn-back:hover { color: var(--ink); }
-.pf-btn-back:disabled { visibility: hidden; }
-
-.pf-btn-next {
-  background: var(--blue-600);
-  color: #fff;
-  border: none;
-  border-radius: var(--radius, 8px);
-  padding: 10px 22px;
-  font-size: 13.5px;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.pf-btn-next:hover { background: var(--blue-700); }
 
 /* ---------- Questionnaire ---------- */
 .pf-q-progress {
@@ -697,7 +668,7 @@ body.is-live-call .demo-banner {
   color: var(--blue-700);
   border-radius: 10px;
   padding: 12px 14px;
-  font-size: 12.5px;
+  font-size: 12px;
   line-height: 1.55;
   margin-bottom: 28px;
 }
@@ -717,7 +688,7 @@ body.is-live-call .demo-banner {
   border-radius: 50%;
   background: var(--slate-bg);
   color: var(--slate-tx);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   margin-right: 8px;
 }
@@ -725,7 +696,7 @@ body.is-live-call .demo-banner {
 .pf-question-label {
   display: flex;
   align-items: center;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--ink);
   margin-bottom: 12px;
@@ -760,64 +731,64 @@ body.is-live-call .demo-banner {
    flip with OS theme. ══════════════════════════════════════════════ */
 
 .r5-layout-dashboard {
-  --il-bg: #0b1420;
-  --il-text: #eef3f8;
+  --il-bg: var(--bg);
+  --il-text: var(--ink);
   --il-header-bg: rgba(11, 18, 32, 0.92);
   --il-header-border: rgba(255, 255, 255, 0.06);
-  --il-job-title: #eef3f8;
+  --il-job-title: var(--ink);
   --il-job-sep: rgba(148, 163, 184, 0.7);
   --il-job-company: rgba(203, 213, 225, 0.88);
-  --il-badge-text: #a9d3da;
+  --il-badge-text: var(--blue-200);
   --il-pill-bg: rgba(30, 41, 59, 0.9);
   --il-pill-border: rgba(255, 255, 255, 0.1);
-  --il-pill-text: #c3ceda;
+  --il-pill-text: var(--ink-2);
   --il-panel-bg: rgba(13, 20, 35, 0.88);
   --il-panel-border: rgba(255, 255, 255, 0.07);
-  --il-glyph-text: #a9d3da;
-  --il-transcript-title: #c3ceda;
+  --il-glyph-text: var(--blue-200);
+  --il-transcript-title: var(--ink-2);
   --il-foot-bg: rgba(8, 12, 22, 0.45);
   --il-foot-border: rgba(255, 255, 255, 0.06);
-  --il-foot-note: #8fa0b8;
+  --il-foot-note: var(--muted);
   --il-control-bg: rgba(15, 23, 42, 0.6);
   --il-control-border: rgba(255, 255, 255, 0.08);
-  --il-turn-title: #eef3f8;
-  --il-turn-sub: #8fa0b8;
-  --il-mic-cta: #8fa0b8;
+  --il-turn-title: var(--ink);
+  --il-turn-sub: var(--muted);
+  --il-mic-cta: var(--muted);
   --il-tips-bg: rgba(255, 255, 255, 0.03);
   --il-tips-border: rgba(255, 255, 255, 0.06);
-  --il-tips-text: #8fa0b8;
+  --il-tips-text: var(--muted);
 
   background: var(--il-bg);
   color: var(--il-text);
 }
 
 [data-theme='light'] .r5-layout-dashboard {
-  --il-bg: #f2f4f7;
-  --il-text: #061d3c;
+  --il-bg: var(--bg);
+  --il-text: var(--ink);
   --il-header-bg: rgba(255, 255, 255, 0.92);
   --il-header-border: rgba(6, 29, 60, 0.08);
-  --il-job-title: #061d3c;
+  --il-job-title: var(--ink);
   --il-job-sep: rgba(91, 107, 133, 0.6);
   --il-job-company: rgba(51, 70, 94, 0.85);
-  --il-badge-text: #256e85;
+  --il-badge-text: var(--blue-700);
   --il-pill-bg: #ffffff;
   --il-pill-border: rgba(6, 29, 60, 0.12);
-  --il-pill-text: #33465e;
+  --il-pill-text: var(--ink-2);
   --il-panel-bg: #ffffff;
   --il-panel-border: rgba(6, 29, 60, 0.1);
-  --il-glyph-text: #256e85;
-  --il-transcript-title: #33465e;
+  --il-glyph-text: var(--blue-700);
+  --il-transcript-title: var(--ink-2);
   --il-foot-bg: rgba(6, 29, 60, 0.03);
   --il-foot-border: rgba(6, 29, 60, 0.08);
-  --il-foot-note: #5b6b85;
+  --il-foot-note: var(--muted);
   --il-control-bg: rgba(255, 255, 255, 0.85);
   --il-control-border: rgba(6, 29, 60, 0.08);
-  --il-turn-title: #061d3c;
-  --il-turn-sub: #5b6b85;
-  --il-mic-cta: #5b6b85;
+  --il-turn-title: var(--ink);
+  --il-turn-sub: var(--muted);
+  --il-mic-cta: var(--muted);
   --il-tips-bg: rgba(6, 29, 60, 0.03);
   --il-tips-border: rgba(6, 29, 60, 0.08);
-  --il-tips-text: #5b6b85;
+  --il-tips-text: var(--muted);
 }
 
 .r5-layout-dashboard .r5-app {

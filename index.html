@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rocky — Candidate Flow Demo</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="css/rocky-ui.css" />
   <link rel="stylesheet" href="css/candidate_revamp.css" />
   <link rel="stylesheet" href="css/interview_revamp.css" />
@@ -26,14 +25,14 @@
           <span><small>AI Interview</small></span>
         </a>
         <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
-          <i id="theme-icon" class="fa-solid fa-moon"></i>
+          <span id="theme-icon"><svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg></span>
         </button>
       </header>
 
       <div class="rv-login">
         <section class="rv-login-story">
           <div class="rv-invite-badge">
-            <i class="fa-regular fa-envelope"></i>
+            <svg width="12" height="12" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>
             Undangan Interview
           </div>
           <h1>Selamat datang,<br /><em>Sarah Amelia</em></h1>
@@ -61,21 +60,21 @@
               <div class="rv-input-wrap">
                 <input type="password" id="login-password" class="rv-styled" placeholder="Masukkan password Anda" required />
                 <button type="button" class="rv-toggle-pw" onclick="togglePasswordVisibility()" aria-label="Tampilkan password">
-                  <i id="pw-eye-icon" class="fa-regular fa-eye"></i>
+                  <span id="pw-eye-icon"><svg width="16" height="16" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M607.5-372.5Q660-425 660-500t-52.5-127.5Q555-680 480-680t-127.5 52.5Q300-575 300-500t52.5 127.5Q405-320 480-320t127.5-52.5Zm-204-51Q372-455 372-500t31.5-76.5Q435-608 480-608t76.5 31.5Q588-545 588-500t-31.5 76.5Q525-392 480-392t-76.5-31.5ZM214-281.5Q94-363 40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200q-146 0-266-81.5ZM480-500Zm207.5 160.5Q782-399 832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280q113 0 207.5-59.5Z"/></svg></span>
                 </button>
               </div>
             </div>
 
             <button type="submit" class="rv-btn rv-btn-primary">
-              <i class="fa-solid fa-right-to-bracket"></i>
+              <svg width="16" height="16" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M480-120v-80h280v-560H480v-80h280q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H480Zm-80-160-55-58 102-102H120v-80h327L345-622l55-58 200 200-200 200Z"/></svg>
               Lanjut ke Interview
             </button>
           </form>
 
           <ul class="rv-hint-list">
-            <li><i class="fa-solid fa-circle-check" style="color:#10B981"></i> Gunakan laptop atau desktop (bukan HP)</li>
-            <li><i class="fa-solid fa-circle-check" style="color:#10B981"></i> Siapkan kamera &amp; mikrofon sebelum memulai</li>
-            <li><i class="fa-solid fa-circle-check" style="color:#10B981"></i> Pastikan koneksi internet stabil</li>
+            <li><svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle;color:#10B981"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg> Gunakan laptop atau desktop (bukan HP)</li>
+            <li><svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle;color:#10B981"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg> Siapkan kamera &amp; mikrofon sebelum memulai</li>
+            <li><svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle;color:#10B981"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg> Pastikan koneksi internet stabil</li>
           </ul>
         </section>
       </div>
@@ -93,7 +92,7 @@
         <div class="pf-topbar-right">
           <div class="pf-journey" id="journey-checklist"></div>
           <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
-            <i class="theme-icon-mirror fa-solid fa-moon"></i>
+            <span class="theme-icon-mirror"><svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg></span>
           </button>
           <a href="#" class="pf-exit" onclick="goToScreen('screen-login'); return false">Keluar</a>
         </div>
@@ -106,8 +105,8 @@
             <h4>PT Cakra Tekno Nusantara</h4>
             <p>Python Developer</p>
             <div class="pf-job-mini-meta">
-              <span><i class="fa-regular fa-calendar-days"></i> 16 Agu 2026</span>
-              <span><i class="fa-regular fa-clock"></i> 60 menit</span>
+              <span><svg width="12" height="12" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-188.5-11.5Q280-423 280-440t11.5-28.5Q303-480 320-480t28.5 11.5Q360-457 360-440t-11.5 28.5Q337-400 320-400t-28.5-11.5ZM640-400q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-188.5-11.5Q280-263 280-280t11.5-28.5Q303-320 320-320t28.5 11.5Q360-297 360-280t-11.5 28.5Q337-240 320-240t-28.5-11.5ZM640-240q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg> 16 Agu 2026</span>
+              <span><svg width="12" height="12" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg> 60 menit</span>
             </div>
           </div>
 
@@ -154,7 +153,7 @@
               <p class="pf-sub">Rocky akan memverifikasi perangkat, kamera, dan mikrofon Anda sebelum interview dimulai.</p>
 
               <div class="pf-check-card">
-                <div class="pf-check-icon"><i class="fa-solid fa-laptop"></i></div>
+                <div class="pf-check-icon"><svg width="15" height="15" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M80-160q-33 0-56.5-23.5T0-240h160q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240h160q0 33-23.5 56.5T880-160H80Zm428.5-51.5Q520-223 520-240t-11.5-28.5Q497-280 480-280t-28.5 11.5Q440-257 440-240t11.5 28.5Q463-200 480-200t28.5-11.5ZM160-320h640v-440H160v440Zm0 0v-440 440Z"/></svg></div>
                 <div class="pf-check-copy">
                   <h3>Perangkat terverifikasi</h3>
                   <p>Anda menggunakan laptop/desktop — perangkat yang didukung untuk sesi interview ini.</p>
@@ -162,12 +161,12 @@
               </div>
 
               <div class="pf-webcam-box">
-                <i class="fa-solid fa-video"></i>
+                <svg width="29" height="29" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h480q33 0 56.5 23.5T720-720v180l160-160v440L720-420v180q0 33-23.5 56.5T640-160H160Zm0-80h480v-480H160v480Zm0 0v-480 480Z"/></svg>
                 <span>Pratinjau kamera akan tampil di sini</span>
               </div>
 
               <div class="pf-check-card">
-                <div class="pf-check-icon"><i class="fa-solid fa-microphone"></i></div>
+                <div class="pf-check-icon"><svg width="15" height="15" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M395-435q-35-35-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35q-50 0-85-35Zm85-205Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm68.5-371.5Q520-503 520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480q17 0 28.5-11.5Z"/></svg></div>
                 <div class="pf-check-copy">
                   <h3>Kamera &amp; mikrofon siap</h3>
                   <p>Pastikan Anda mengizinkan akses kamera, mikrofon, dan berbagi seluruh layar (Entire Screen) saat diminta browser.</p>
@@ -175,8 +174,8 @@
               </div>
 
               <div class="pf-actions">
-                <button type="button" class="pf-btn-back" disabled>Kembali</button>
-                <button type="button" class="pf-btn-next" onclick="completePfStep(1)">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="btn" disabled>Kembali</button>
+                <button type="button" class="btn pri" onclick="completePfStep(1)">Lanjut <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></button>
               </div>
             </div>
 
@@ -186,7 +185,7 @@
               <p class="pf-sub">Ruangan yang tenang membantu Rocky mendengar jawaban Anda dengan jelas.</p>
 
               <div class="pf-check-card">
-                <div class="pf-check-icon"><i class="fa-solid fa-volume-high"></i></div>
+                <div class="pf-check-icon"><svg width="15" height="15" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></svg></div>
                 <div class="pf-check-copy">
                   <h3>Level kebisingan ruangan</h3>
                   <p>Cari ruangan tertutup, hindari kipas angin/AC yang berisik, dan minta orang di sekitar untuk tidak mengganggu selama interview.</p>
@@ -200,8 +199,8 @@
               </div>
 
               <div class="pf-actions">
-                <button type="button" class="pf-btn-back" onclick="goToPfStep(1)">Kembali</button>
-                <button type="button" class="pf-btn-next" onclick="completePfStep(2)">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="btn" onclick="goToPfStep(1)">Kembali</button>
+                <button type="button" class="btn pri" onclick="completePfStep(2)">Lanjut <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></button>
               </div>
             </div>
 
@@ -217,7 +216,7 @@
               </div>
 
               <div class="pf-check-card">
-                <div class="pf-check-icon"><i class="fa-solid fa-wifi"></i></div>
+                <div class="pf-check-icon"><svg width="15" height="15" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M409-149q-29-29-29-71t29-71q29-29 71-29t71 29q29 29 29 71t-29 71q-29 29-71 29t-71-29ZM254-346l-84-86q59-59 138.5-93.5T480-560q92 0 171.5 35T790-430l-84 84q-44-44-102-69t-124-25q-66 0-124 25t-102 69ZM84-516 0-600q92-94 215-147t265-53q142 0 265 53t215 147l-84 84q-77-77-178.5-120.5T480-680q-116 0-217.5 43.5T84-516Z"/></svg></div>
                 <div class="pf-check-copy">
                   <h3>Koneksi stabil</h3>
                   <p>Kecepatan dan latensi Anda sudah mencukupi untuk sesi video interview.</p>
@@ -225,8 +224,8 @@
               </div>
 
               <div class="pf-actions">
-                <button type="button" class="pf-btn-back" onclick="goToPfStep(2)">Kembali</button>
-                <button type="button" class="pf-btn-next" onclick="completePfStep(3)">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="btn" onclick="goToPfStep(2)">Kembali</button>
+                <button type="button" class="btn pri" onclick="completePfStep(3)">Lanjut <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></button>
               </div>
             </div>
 
@@ -237,17 +236,17 @@
 
               <div class="pf-how-row">
                 <div class="pf-how-step">
-                  <i class="fa-solid fa-comment-dots"></i>
+                  <svg width="18" height="18" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M240-400h320v-80H240v80Zm0-120h480v-80H240v80Zm0-120h480v-80H240v80ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"/></svg>
                   <span>Rocky bertanya</span>
                 </div>
-                <div class="pf-how-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="pf-how-arrow"><svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></div>
                 <div class="pf-how-step">
-                  <i class="fa-solid fa-microphone"></i>
+                  <svg width="18" height="18" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M395-435q-35-35-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35q-50 0-85-35Zm85-205Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm68.5-371.5Q520-503 520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480q17 0 28.5-11.5Z"/></svg>
                   <span>Klik mic &amp; jawab</span>
                 </div>
-                <div class="pf-how-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="pf-how-arrow"><svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></div>
                 <div class="pf-how-step">
-                  <i class="fa-solid fa-paper-plane"></i>
+                  <svg width="18" height="18" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></svg>
                   <span>Kirim jawaban</span>
                 </div>
               </div>
@@ -255,18 +254,18 @@
               <div class="pf-video-ref">
                 <div class="pf-video-ref-player">
                   <button type="button" class="pf-video-ref-play" aria-label="Putar video tutorial">
-                    <i class="fa-solid fa-play"></i>
+                    <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg>
                   </button>
                   <span class="pf-video-ref-duration">1:24</span>
                 </div>
                 <div class="pf-video-ref-copy">
-                  <h3><i class="fa-solid fa-circle-play"></i> Video tutorial: cara menjawab</h3>
+                  <h3><svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg> Video tutorial: cara menjawab</h3>
                   <p>Tonton contoh singkat alur tanya-jawab dengan Rocky sebelum memulai interview sesungguhnya.</p>
                 </div>
               </div>
 
               <div class="pf-check-card">
-                <div class="pf-check-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="pf-check-icon"><svg width="15" height="15" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M423.5-103.5Q400-127 400-160h160q0 33-23.5 56.5T480-80q-33 0-56.5-23.5ZM320-200v-80h320v80H320Zm10-120q-69-41-109.5-110T180-580q0-125 87.5-212.5T480-880q125 0 212.5 87.5T780-580q0 81-40.5 150T630-320H330Zm24-80h252q45-32 69.5-79T700-580q0-92-64-156t-156-64q-92 0-156 64t-64 156q0 54 24.5 101t69.5 79Zm126 0Z"/></svg></div>
                 <div class="pf-check-copy">
                   <h3>Tips menjawab</h3>
                   <p>Jawab dengan jelas dan ringkas. Berpikir sebentar sebelum menjawab akan membantumu memberikan jawaban terbaik.</p>
@@ -274,8 +273,8 @@
               </div>
 
               <div class="pf-actions">
-                <button type="button" class="pf-btn-back" onclick="goToPfStep(3)">Kembali</button>
-                <button type="button" class="pf-btn-next" onclick="completePfStep(4)">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+                <button type="button" class="btn" onclick="goToPfStep(3)">Kembali</button>
+                <button type="button" class="btn pri" onclick="completePfStep(4)">Lanjut <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></button>
               </div>
             </div>
 
@@ -285,7 +284,7 @@
               <p class="pf-sub">Semua pemeriksaan sudah selesai.</p>
 
               <div class="pf-summary-card">
-                <i class="fa-solid fa-circle-check"></i>
+                <svg width="26" height="26" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
                 <div>
                   <h3>Semua langkah selesai</h3>
                   <p>Perangkat, lingkungan, dan koneksi Anda sudah siap untuk interview.</p>
@@ -298,9 +297,9 @@
               </p>
 
               <div class="pf-actions">
-                <button type="button" class="pf-btn-back" onclick="goToPfStep(4)">Kembali</button>
-                <button type="button" class="pf-btn-next" onclick="goToScreen('screen-questionnaire')">
-                  Lanjut ke Pertanyaan <i class="fa-solid fa-arrow-right"></i>
+                <button type="button" class="btn" onclick="goToPfStep(4)">Kembali</button>
+                <button type="button" class="btn pri" onclick="goToScreen('screen-questionnaire')">
+                  Lanjut ke Pertanyaan <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
                 </button>
               </div>
             </div>
@@ -322,11 +321,11 @@
         <div class="pf-topbar-right">
           <div class="pf-journey" id="journey-questionnaire"></div>
           <div class="pf-q-timer" id="q-timer" hidden>
-            <i class="fa-regular fa-clock"></i>
+            <svg width="12" height="12" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg>
             <span id="q-timer-text">00:00</span>
           </div>
           <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
-            <i class="theme-icon-mirror fa-solid fa-moon"></i>
+            <span class="theme-icon-mirror"><svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg></span>
           </button>
           <a href="#" class="pf-exit" onclick="goToScreen('screen-checklist'); return false">Kembali</a>
         </div>
@@ -339,7 +338,7 @@
             <p class="pf-sub">Jawaban Anda akan dilampirkan pada profil interview untuk ditinjau tim rekrutmen.</p>
 
             <div class="pf-hr-note">
-              <i class="fa-solid fa-circle-info"></i>
+              <svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M440-280h80v-240h-80v240Zm68.5-331.5Q520-623 520-640t-11.5-28.5Q497-680 480-680t-28.5 11.5Q440-657 440-640t11.5 28.5Q463-600 480-600t28.5-11.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
               <span>Pertanyaan berikut disiapkan oleh tim HR <strong>PT Cakra Tekno Nusantara</strong> khusus untuk posisi <strong>Python Developer</strong>. Jawab semua pertanyaan untuk melanjutkan ke sesi interview.</span>
             </div>
 
@@ -393,9 +392,9 @@
               </div>
 
               <div class="pf-actions">
-                <button type="button" class="pf-btn-back" onclick="goToScreen('screen-checklist')">Kembali</button>
-                <button type="submit" class="pf-btn-next" id="q-submit-btn" disabled>
-                  Lanjut ke Interview <i class="fa-solid fa-arrow-right"></i>
+                <button type="button" class="btn" onclick="goToScreen('screen-checklist')">Kembali</button>
+                <button type="submit" class="btn pri" id="q-submit-btn" disabled>
+                  Lanjut ke Interview <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
                 </button>
               </div>
             </form>
@@ -434,21 +433,21 @@
           </div>
           <div class="r5-hud-right">
             <div class="r5-timer-pill">
-              <i class="fa-solid fa-stopwatch" style="margin-right:6px"></i>
+              <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle;margin-right:6px"><path d="M360-840v-80h240v80H360Zm80 440h80v-240h-80v240Zm-99.5 291.5Q275-137 226-186t-77.5-114.5Q120-366 120-440t28.5-139.5Q177-645 226-694t114.5-77.5Q406-800 480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80q-74 0-139.5-28.5ZM678-242q82-82 82-198t-82-198q-82-82-198-82t-198 82q-82 82-82 198t82 198q82 82 198 82t198-82ZM480-440Z"/></svg>
               <span id="timer-text">59:46</span>
             </div>
             <div class="r5-status-pill is-live">
-              <i class="fa-solid fa-circle" style="color:#ef4444;margin-right:6px;font-size:9px"></i>
+              <svg width="9" height="9" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle;color:#ef4444;margin-right:6px"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
               <span>LIVE</span>
             </div>
             <button type="button" class="r5-av-toggle" id="hud-mic-toggle" onclick="toggleHudMic()" aria-label="Mikrofon">
-              <i class="fa-solid fa-microphone"></i>
+              <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M395-435q-35-35-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35q-50 0-85-35Zm85-205Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm68.5-371.5Q520-503 520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480q17 0 28.5-11.5Z"/></svg>
             </button>
             <button type="button" class="r5-av-toggle" id="hud-speaker-toggle" onclick="toggleHudSpeaker()" aria-label="Speaker">
-              <i class="fa-solid fa-volume-high"></i>
+              <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></svg>
             </button>
             <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
-              <i class="theme-icon-mirror fa-solid fa-moon"></i>
+              <span class="theme-icon-mirror"><svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg></span>
             </button>
           </div>
         </header>
@@ -457,7 +456,7 @@
           <aside class="r5-left-rail">
             <div class="r5-transcript">
               <div class="r5-transcript-head">
-                <span class="r5-transcript-glyph"><i class="fa-solid fa-comment-dots"></i></span>
+                <span class="r5-transcript-glyph"><svg width="12" height="12" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M240-400h320v-80H240v80Zm0-120h480v-80H240v80Zm0-120h480v-80H240v80ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"/></svg></span>
                 <span class="r5-transcript-title">Percakapan</span>
               </div>
               <div class="r5-chat-thread" id="live-chat-thread"></div>
@@ -470,7 +469,7 @@
           <main class="r5-main-column">
             <div class="r5-video-panel">
               <div class="demo-cam-placeholder">
-                <i class="fa-solid fa-video"></i>
+                <svg width="38" height="38" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h480q33 0 56.5 23.5T720-720v180l160-160v440L720-420v180q0 33-23.5 56.5T640-160H160Zm0-80h480v-480H160v480Zm0 0v-480 480Z"/></svg>
                 <span>Kamera Anda</span>
               </div>
 
@@ -502,7 +501,7 @@
                 <div class="r5-mic-dock state-ready" id="mic-dock">
                   <button type="button" class="r5-mic-btn" id="mic-btn" onclick="handleMicClick()" aria-label="Kirim jawaban" style="cursor:pointer;background:#10b981;border-color:#10b981">
                     <span class="r5-mic-btn__core">
-                      <i id="mic-icon" class="fa-solid fa-microphone" style="color:#fff"></i>
+                      <span id="mic-icon"><svg width="25" height="25" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle;color:#fff"><path d="M395-435q-35-35-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35q-50 0-85-35Zm85-205Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm68.5-371.5Q520-503 520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480q17 0 28.5-11.5Z"/></svg></span>
                       <span class="r5-mic-btn-waves" aria-hidden="true">
                         <span></span><span></span><span></span><span></span>
                       </span>
@@ -514,7 +513,7 @@
 
               <aside class="r5-tips-panel demo-tips-panel" style="border-radius:12px;padding:10px 14px">
                 <div class="r5-tips-head demo-tips-head" style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;margin-bottom:4px">
-                  <i class="fa-solid fa-lightbulb"></i>
+                  <svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M423.5-103.5Q400-127 400-160h160q0 33-23.5 56.5T480-80q-33 0-56.5-23.5ZM320-200v-80h320v80H320Zm10-120q-69-41-109.5-110T180-580q0-125 87.5-212.5T480-880q125 0 212.5 87.5T780-580q0 81-40.5 150T630-320H330Zm24-80h252q45-32 69.5-79T700-580q0-92-64-156t-156-64q-92 0-156 64t-64 156q0 54 24.5 101t69.5 79Zm126 0Z"/></svg>
                   <span>Tips</span>
                 </div>
                 <p class="r5-tips-text demo-tips-text" style="font-size:11px;margin:0;line-height:1.45">
@@ -540,10 +539,10 @@
         <div class="rv-topbar-right">
           <span class="rv-topbar-meta">Halo, Sarah Amelia</span>
           <button type="button" class="rv-theme-toggle" onclick="toggleTheme()" aria-label="Ganti tema">
-            <i class="theme-icon-mirror fa-solid fa-moon"></i>
+            <span class="theme-icon-mirror"><svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg></span>
           </button>
           <a href="#" class="rv-btn-logout" onclick="goToScreen('screen-login'); return false">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
+            <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg> Logout
           </a>
         </div>
       </header>
@@ -571,14 +570,14 @@
             <div class="rv-job-body">
               <div class="rv-stat-grid">
                 <div class="rv-stat">
-                  <i class="fa-regular fa-calendar-days stat-icon"></i>
+                  <svg width="20" height="20" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-188.5-11.5Q280-423 280-440t11.5-28.5Q303-480 320-480t28.5 11.5Q360-457 360-440t-11.5 28.5Q337-400 320-400t-28.5-11.5ZM640-400q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-188.5-11.5Q280-263 280-280t11.5-28.5Q303-320 320-320t28.5 11.5Q360-297 360-280t-11.5 28.5Q337-240 320-240t-28.5-11.5ZM640-240q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
                   <div class="stat-info">
                     <label>Tanggal</label>
                     <span>16 Agu 2026</span>
                   </div>
                 </div>
                 <div class="rv-stat">
-                  <i class="fa-regular fa-clock stat-icon"></i>
+                  <svg width="20" height="20" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg>
                   <div class="stat-info">
                     <label>Durasi</label>
                     <span>60 menit</span>
@@ -588,15 +587,15 @@
               <div class="rv-stepper">
                 <div class="rv-step is-done">
                   <div class="num">1</div>
-                  <div class="label">Persiapan <i class="fa-solid fa-circle-check step-check-icon"></i></div>
+                  <div class="label">Persiapan <svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></div>
                 </div>
                 <div class="rv-step is-done">
                   <div class="num">2</div>
-                  <div class="label">Pertanyaan <i class="fa-solid fa-circle-check step-check-icon"></i></div>
+                  <div class="label">Pertanyaan <svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></div>
                 </div>
                 <div class="rv-step is-done">
                   <div class="num">3</div>
-                  <div class="label">Interview <i class="fa-solid fa-circle-check step-check-icon"></i></div>
+                  <div class="label">Interview <svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg></div>
                 </div>
                 <div class="rv-step is-active">
                   <div class="num">4</div>
@@ -633,12 +632,12 @@
             <div class="rv-done-left-col">
               <div class="rv-done-card rv-done-video-card">
                 <h3 class="rv-done-card-title">
-                  <i class="fa-solid fa-video" style="margin-right:8px"></i>
+                  <svg width="17" height="17" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle;margin-right:8px"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h480q33 0 56.5 23.5T720-720v180l160-160v440L720-420v180q0 33-23.5 56.5T640-160H160Zm0-80h480v-480H160v480Zm0 0v-480 480Z"/></svg>
                   Rekaman Interview
                 </h3>
                 <div class="rv-done-video-container">
                   <div class="rv-done-video-placeholder">
-                    <i class="fa-solid fa-circle-nodes"></i>
+                    <svg width="35" height="35" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle"><path d="M155-75q-35-35-35-85t35-85q35-35 85-35 14 0 26 3t23 8l57-71q-28-31-39-70t-5-78l-81-27q-17 25-43 40t-58 15q-50 0-85-35T0-580q0-50 35-85t85-35q50 0 85 35t35 85v8l81 28q20-36 53.5-61t75.5-32v-87q-39-11-64.5-42.5T360-840q0-50 35-85t85-35q50 0 85 35t35 85q0 42-26 73.5T510-724v87q42 7 75.5 32t53.5 61l81-28v-8q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-32 0-58.5-15T739-515l-81 27q6 39-5 77.5T614-340l57 70q11-5 23-7.5t26-2.5q50 0 85 35t35 85q0 50-35 85t-85 35q-50 0-85-35t-35-85q0-20 6.5-38.5T624-232l-57-71q-41 23-87.5 23T392-303l-56 71q11 15 17.5 33.5T360-160q0 50-35 85t-85 35q-50 0-85-35Zm-35-465q17 0 28.5-11.5T160-580q0-17-11.5-28.5T120-620q-17 0-28.5 11.5T80-580q0 17 11.5 28.5T120-540Zm148.5 408.5Q280-143 280-160t-11.5-28.5Q257-200 240-200t-28.5 11.5Q200-177 200-160t11.5 28.5Q223-120 240-120t28.5-11.5Zm240-680Q520-823 520-840t-11.5-28.5Q497-880 480-880t-28.5 11.5Q440-857 440-840t11.5 28.5Q463-800 480-800t28.5-11.5ZM480-360q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Zm268.5 228.5Q760-143 760-160t-11.5-28.5Q737-200 720-200t-28.5 11.5Q680-177 680-160t11.5 28.5Q703-120 720-120t28.5-11.5Zm120-420Q880-563 880-580t-11.5-28.5Q857-620 840-620t-28.5 11.5Q800-597 800-580t11.5 28.5Q823-540 840-540t28.5-11.5ZM480-840ZM120-580Zm360 120Zm360-120ZM240-160Zm480 0Z"/></svg>
                     <h4>Rekaman Sedang Diproses</h4>
                     <p>File video rekaman Anda sedang dipersiapkan di server aman.</p>
                   </div>
@@ -649,7 +648,7 @@
             <div class="rv-done-right-col">
               <div class="rv-done-card rv-done-chat-timeline-card">
                 <h3 class="rv-done-card-title">
-                  <i class="fa-regular fa-comments" style="margin-right:8px"></i>
+                  <svg width="17" height="17" viewBox="0 -960 960 960" fill="currentColor" style="flex-shrink:0;vertical-align:middle;margin-right:8px"><path d="M880-80 720-240H320q-33 0-56.5-23.5T240-320v-40h440q33 0 56.5-23.5T760-440v-280h40q33 0 56.5 23.5T880-640v560ZM160-473l47-47h393v-280H160v327ZM80-280v-520q0-33 23.5-56.5T160-880h440q33 0 56.5 23.5T680-800v280q0 33-23.5 56.5T600-440H240L80-280Zm80-240v-280 280Z"/></svg>
                   Riwayat Percakapan
                 </h3>
                 <div class="rv-done-chat-thread" id="done-chat-thread"></div>
@@ -661,6 +660,7 @@
     </div>
   </section>
 
+  <script src="js/icons.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

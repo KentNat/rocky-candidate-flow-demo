@@ -20,7 +20,7 @@
   --blue-100: #cfe6ea;
   --blue-200: #a9d3da;
   --blue-500: #358ab3;
-  --blue-600: #2f7fa6;
+  --blue-600: #2e7ca2; /* nudged from #2f7fa6 for 4.5:1 text contrast on white (WCAG 1.4.3) */
   --blue-700: #256e85;
   --blue-900: #123246;
   --accent-1: #358ab3;
@@ -30,11 +30,11 @@
   --ink: #061d3c; /* primary text */
   --ink-2: #33465e; /* secondary text */
   --muted: #5b6b85; /* tertiary / helper text */
-  --faint: #94a1b5; /* placeholder / disabled text */
+  --faint: #657792; /* placeholder / disabled text -- darkened from #94a1b5 for 4.5:1 (WCAG 1.4.3) */
 
   /* Borders & surfaces */
   --line: #e1e5ec;
-  --line-2: #cbd2de;
+  --line-2: #8394b0; /* darkened from #cbd2de -- input/select borders need 3:1 (WCAG 1.4.11) */
   --bg: #f2f4f7; /* page background */
   --card: #ffffff; /* card/panel background */
   --sidenav-bg: #faf8f5; /* sidebar -- deliberately a warmer off-white, distinct from --bg */
@@ -48,6 +48,15 @@
   --amber-tx: #b45309;
   --slate-bg: #f1f5f9;
   --slate-tx: #475569;
+  --violet-bg: #ede9fe;
+  --violet-tx: #6d28d9;
+
+  /* Floating dark chrome (e.g. the bulk-selection action bar) -- deliberately
+     NOT redefined in the dark-theme block below, so it keeps the same dark
+     pill look with white text/icons in both themes instead of inheriting
+     --ink's light-mode-only "dark" value and going unreadable once --ink
+     itself flips to near-white under dark mode. */
+  --overlay-dark-bg: #061d3c;
 
   /* Typography */
   --font-heading: 'Montserrat', -apple-system, sans-serif;
@@ -76,6 +85,8 @@
   /* Shape & elevation */
   --radius: 8px;
   --shadow: 0 1px 2px rgba(6, 29, 60, 0.05), 0 8px 24px rgba(6, 29, 60, 0.07);
+  --shadow-popover: 0 8px 24px rgba(15, 23, 42, 0.14);
+  --shadow-panel: 0 12px 32px rgba(15, 23, 42, 0.16);
 }
 /* Dark mode -- only the surface/text tokens repaint; brand blues and the
    status bg/tx pairs (green/red/amber/slate) stay the same in both themes,
@@ -93,13 +104,15 @@
   --ink: #eef3f8;
   --ink-2: #c3ceda;
   --muted: #8fa0b8;
-  --faint: #5b6b85;
+  --faint: #7384a0; /* lightened from #5b6b85 for 4.5:1 on dark --card (WCAG 1.4.3) */
   --line: #223349;
-  --line-2: #2c4159;
+  --line-2: #476990; /* lightened from #2c4159 -- input/select borders need 3:1 (WCAG 1.4.11) */
   --bg: #0b1420;
   --card: #101c2c;
   --sidenav-bg: #0d1826;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.7);
+  --shadow-panel: 0 12px 32px rgba(0, 0, 0, 0.8);
 }
 * {
   box-sizing: border-box;
@@ -122,6 +135,15 @@ a {
 button {
   font-family: inherit;
   cursor: pointer;
+}
+/* Elements that aren't natively focusable (<tr>, <div>, <span> used as a
+   click target) get tabindex="0" + role="button" + activateOnEnter() so
+   they're keyboard-operable -- but some of those (<tr> in particular) don't
+   render the browser's default focus ring even once focusable, so this
+   guarantees one explicitly (WCAG 2.4.7). */
+[tabindex='0'][role='button']:focus-visible {
+  outline: 2px solid var(--blue-500);
+  outline-offset: -2px;
 }
 input,
 select,
@@ -255,6 +277,21 @@ body.snav-expanded {
   background: var(--blue-50);
   color: var(--blue-700);
 }
+/* icons with a distinct filled glyph (recruitments, candidates) carry both an
+   "icon-outline" and "icon-fill" <path> in their svg -- swap which one draws
+   on .active so the active nav item reads as filled, in both themes since
+   this only toggles path visibility, not color. Icons where Material Symbols'
+   filled variant is pixel-identical to the outline (analytics, params) only
+   ship one path and need no swap. */
+.sicon .icon-fill {
+  display: none;
+}
+.sicon.active .icon-outline {
+  display: none;
+}
+.sicon.active .icon-fill {
+  display: block;
+}
 .sicon:focus {
   outline: none;
 }
@@ -299,7 +336,10 @@ body.snav-expanded {
   top: 50%;
   transform: translateY(-50%);
   background: var(--ink);
-  color: #fff;
+  color: var(
+    --bg
+  ); /* --ink flips near-black/near-white per theme, so pairing
+    with --bg (near-white/near-black) keeps this tooltip's text readable in both */
   font-size: 12px;
   font-weight: 500;
   padding: 6px 11px;
@@ -341,7 +381,9 @@ body.snav-expanded {
   position: fixed;
   display: none;
   background: var(--ink);
-  color: #fff;
+  color: var(
+    --bg
+  ); /* see .stip's comment -- --ink flips per theme, pair with --bg to stay readable */
   font-size: 12px;
   font-weight: 500;
   line-height: 1.5;
@@ -470,6 +512,14 @@ body.snav-expanded {
   background: var(--blue-700);
   border-color: var(--blue-700);
 }
+.btn.danger {
+  background: var(--red-tx);
+  border-color: var(--red-tx);
+  color: #fff;
+}
+.btn.danger:hover {
+  filter: brightness(0.9);
+}
 .btn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
@@ -556,7 +606,7 @@ body.snav-expanded {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  box-shadow: var(--shadow-popover);
   min-width: 180px;
   padding: 6px;
   z-index: 70;
@@ -615,7 +665,7 @@ tr.row-selected {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: var(--ink);
+  background: var(--overlay-dark-bg);
   color: #fff;
   border-radius: 999px;
   padding: 10px 14px 10px 20px;
@@ -680,7 +730,7 @@ tr.row-selected {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);
+  box-shadow: var(--shadow-panel);
   padding: 16px;
   z-index: 70;
   display: flex;
@@ -805,6 +855,11 @@ tr.row-selected {
   border-radius: 12px;
   box-shadow: var(--shadow);
 }
+.empty-state {
+  padding: 50px;
+  text-align: center;
+  color: var(--faint);
+}
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -922,6 +977,10 @@ tr.row-selected {
   background: var(--blue-50);
   color: var(--blue-700);
 }
+.badge.violet {
+  background: var(--violet-bg);
+  color: var(--violet-tx);
+}
 .pill {
   display: inline-flex;
   font-size: 11px;
@@ -1011,7 +1070,7 @@ tr.row-selected {
 .stat {
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 14px 16px;
 }
 .stat .n {
@@ -1106,7 +1165,7 @@ tr.row-selected {
 }
 .an-conv-pct {
   color: var(--blue-600);
-  font-size: 15px;
+  font-size: 16px;
 }
 .an-conv-track {
   width: 100%;
@@ -1398,6 +1457,54 @@ tr.row-selected {
   color: var(--muted);
   flex-shrink: 0;
 }
+/* ---------- candidate detail: structured Biodata tab ---------- */
+.biodata-group {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.biodata-group:first-child {
+  padding-top: 0;
+}
+.biodata-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.biodata-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.biodata-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.biodata-entry-main {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.biodata-entry-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.skill-tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--blue-50);
+  color: var(--blue-700);
+}
 .stars {
   letter-spacing: 1px;
 }
@@ -1454,7 +1561,7 @@ tr.row-selected {
   gap: 2px;
 }
 .overall-chip .oc-label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -1647,12 +1754,12 @@ tr.row-selected {
   color: var(--muted);
 }
 .iv-badge.amber {
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--amber-bg);
+  color: var(--amber-tx);
 }
 .iv-badge.red {
-  background: #fee2e2;
-  color: #991b1b;
+  background: var(--red-bg);
+  color: var(--red-tx);
 }
 .iv-accordion {
   margin-top: 10px;
@@ -1950,6 +2057,62 @@ tr.row-selected {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
+.upl-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 10px;
+  color: var(--faint);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.upl-divider::before,
+.upl-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+#uplImportSearch {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--card);
+  margin-bottom: 8px;
+}
+#uplImportSearch:focus {
+  outline: none;
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px var(--blue-50);
+}
+.upl-import-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+.upl-import-row .uirname {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.upl-import-row .uiremail {
+  color: var(--faint);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .status-panel {
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -2025,6 +2188,12 @@ tr.row-selected {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
+/* .switch is itself a <label>, so ".field label { display: block }" above
+   otherwise wins on specificity and collapses it back to a block, clipping
+   the track/thumb/label row -- reassert the flex layout here. */
+.field label.switch {
+  display: inline-flex;
+}
 
 /* ---------- email compose modal ---------- */
 .ec-to {
@@ -2064,7 +2233,7 @@ tr.row-selected {
   border-radius: 12px;
   padding: 0 8px;
   margin: 0 1px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.9;
   cursor: default;
@@ -2270,12 +2439,12 @@ tr.row-selected {
 .fp-content h2 {
   font-family: var(--font-heading);
   font-weight: 500;
-  font-size: 24px;
+  font-size: 22px;
   letter-spacing: -0.01em;
   margin-bottom: 6px;
 }
 .fp-content .fp-sub {
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--muted);
   margin-bottom: 28px;
   line-height: 1.6;
@@ -2288,7 +2457,7 @@ tr.row-selected {
   color: var(--blue-700);
   border-radius: 10px;
   padding: 12px 14px;
-  font-size: 12.5px;
+  font-size: 12px;
   line-height: 1.55;
   margin-bottom: 22px;
 }
@@ -2374,7 +2543,9 @@ tr.row-selected {
   left: 0;
   width: 280px;
   background: var(--ink);
-  color: #fff;
+  color: var(
+    --bg
+  ); /* see .stip's comment -- --ink flips per theme, pair with --bg to stay readable */
   font-size: 12px;
   font-weight: 400;
   font-style: normal;
@@ -2494,6 +2665,9 @@ tr.row-selected {
 }
 .prio-legend .dot.blue {
   background: var(--blue-600);
+}
+.prio-legend .dot.violet {
+  background: var(--violet-tx);
 }
 .prio-row {
   display: flex;
@@ -2615,6 +2789,9 @@ tr.row-selected {
 .prio-card.blue .dot {
   background: var(--blue-600);
 }
+.prio-card.violet .dot {
+  background: var(--violet-tx);
+}
 .prio-card.red.on {
   background: var(--red-tx);
 }
@@ -2626,6 +2803,9 @@ tr.row-selected {
 }
 .prio-card.blue.on {
   background: var(--blue-600);
+}
+.prio-card.violet.on {
+  background: var(--violet-tx);
 }
 
 /* hover-to-reveal priority line: idle state shows only a thin colored line; hovering it
@@ -2654,6 +2834,9 @@ tr.row-selected {
 }
 .crit-hoverline .chl-strip.blue {
   background: var(--blue-600);
+}
+.crit-hoverline .chl-strip.violet {
+  background: var(--violet-tx);
 }
 .crit-hoverline .chl-idle {
   position: absolute;
@@ -2706,7 +2889,7 @@ tr.row-selected {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.16);
+  box-shadow: var(--shadow-panel);
   padding: 14px;
   z-index: 20;
   display: flex;
@@ -2745,6 +2928,9 @@ tr.row-selected {
 }
 .pip-row .dot.blue {
   background: var(--blue-600);
+}
+.pip-row .dot.violet {
+  background: var(--violet-tx);
 }
 .pip-row b {
   display: block;
@@ -2821,7 +3007,9 @@ tr.row-selected {
 }
 .notif-tab.on {
   background: var(--ink);
-  color: #fff;
+  color: var(
+    --bg
+  ); /* see .stip's comment -- --ink flips per theme, pair with --bg to stay readable */
   border-color: var(--ink);
 }
 .notif-list {
@@ -2931,7 +3119,7 @@ tr.row-selected {
   border: 1px solid var(--line);
   border-left: 3px solid var(--blue-600);
   border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  box-shadow: var(--shadow-popover);
   padding: 12px 16px;
   min-width: 280px;
   display: flex;
@@ -3079,6 +3267,72 @@ tr.row-selected {
   border-radius: 999px;
   background: var(--line-2);
   transition: background 0.15s ease;
+}
+/* Sun/moon theme toggle (Profile > Tampilan) -- a distinct component from
+   the plain on/off .switch above. Deliberately hardcoded near-black/white
+   instead of the --ink/--card theme tokens: it's meant to read as a little
+   day/night scene (dark sky + sun, light sky + moon) that looks the same
+   regardless of which page theme is currently active, not as a themed
+   control that would flip its own colors along with the page. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.theme-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.tt-track {
+  position: relative;
+  width: 52px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: #24262b;
+  transition: background 0.15s ease;
+}
+.theme-toggle input:checked + .tt-track {
+  background: #eef0f3;
+}
+.tt-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #24262b;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+.theme-toggle input:checked + .tt-track .tt-thumb {
+  transform: translateX(22px);
+  background: #1c1d21;
+  color: #ffffff;
+}
+.tt-icon {
+  display: flex;
+}
+.tt-icon-moon {
+  display: none;
+}
+.theme-toggle input:checked + .tt-track .tt-icon-sun {
+  display: none;
+}
+.theme-toggle input:checked + .tt-track .tt-icon-moon {
+  display: flex;
 }
 .switch-thumb {
   position: absolute;
@@ -3315,7 +3569,19 @@ tr.row-selected {
   white-space: nowrap;
 }
 
-/* ---------- auth gate (login / register, shown before the dashboard) ---------- */
+/* ---------- pre-auth gate: public landing page, then sign in / onboarding ----------
+   Four sub-states of body.pre-auth, toggled by a second body class:
+   .view-landing (default -- first-time/logged-out visitors land here),
+   .view-auth (after "Sign In" -- shows #authScreen's login form),
+   .view-onboarding (after "Mulai Gratis"/"Daftar" -- shows #onboardingScreen's
+   4-step company sign-up wizard, ST-446), and .view-param-onboarding (shown
+   automatically once authed but before the one-time CV/Interview Assessment
+   Parameter setup is done -- see #paramOnboardScreen). enterAuth()/
+   enterOnboarding()/backToLanding() in js/app-shell.js flip between the
+   first three; applyAuthView() (also app-shell.js) drives .view-param-
+   onboarding and body.pre-auth itself based on rockyIsAuthed() +
+   rockyParamOnboarded(), so a returning already-onboarded visitor skips all
+   four regardless of which sub-state is left set. */
 body.pre-auth {
   padding-left: 0;
 }
@@ -3323,11 +3589,23 @@ body.pre-auth .sidenav,
 body.pre-auth .wrap {
   display: none;
 }
-#authScreen {
+#landingScreen,
+#authScreen,
+#onboardingScreen,
+#paramOnboardScreen {
   display: none;
 }
-body.pre-auth #authScreen {
+body.pre-auth.view-landing #landingScreen {
+  display: block;
+}
+body.pre-auth.view-auth #authScreen {
   display: flex;
+}
+body.pre-auth.view-onboarding #onboardingScreen {
+  display: grid;
+}
+body.pre-auth.view-param-onboarding #paramOnboardScreen {
+  display: grid;
 }
 #authScreen {
   min-height: 100vh;
@@ -3547,6 +3825,557 @@ body.pre-auth #authScreen {
   }
 }
 
+/* ---------- landing page (public, pre-auth entry point) ---------- */
+#landingScreen {
+  background: var(--bg);
+}
+.landing-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 40px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.landing-nav svg {
+  height: 30px;
+  width: auto;
+}
+.landing-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 56px 24px 96px;
+  text-align: center;
+}
+.landing-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.landing-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+  background: var(--blue-50);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 20px;
+}
+.landing-title {
+  font-family: var(--font-heading);
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+.landing-title span {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.landing-sub {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+.landing-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn.cta {
+  padding: 13px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+}
+.landing-features {
+  padding: 64px 24px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.landing-section-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 40px;
+}
+.landing-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.landing-feature-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 24px 20px;
+  text-align: left;
+}
+.landing-feature-icon {
+  font-size: 26px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--blue-50);
+  margin-bottom: 16px;
+}
+.landing-feature-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.landing-feature-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.landing-footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 24px;
+}
+.landing-footer-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.landing-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.landing-footer-brand svg {
+  height: 20px;
+  width: auto;
+}
+.landing-footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.landing-footer-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+}
+.landing-footer-links a:hover {
+  color: var(--blue-600);
+}
+@media (max-width: 900px) {
+  .landing-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .landing-title {
+    font-size: 32px;
+  }
+  .landing-feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .landing-nav {
+    padding: 20px;
+  }
+}
+
+/* ---------- company onboarding wizard (ST-446) ----------
+   Split-screen: a fixed blue sidebar (logo + vertical stepper + Terms/Plans/
+   Contact Us) on the left, the active step's form centered in a white panel
+   on the right. Steps are plain .ob-step divs toggled via inline display by
+   renderOnboardingStep() in js/app-shell.js; the stepper below mirrors the
+   same step number through .is-active/.is-done classes. */
+#onboardingScreen {
+  min-height: 100vh;
+  grid-template-columns: 320px 1fr;
+}
+.ob-sidebar {
+  background: linear-gradient(160deg, var(--blue-700), var(--blue-900));
+  color: #fff;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ob-logo {
+  height: 26px;
+  width: auto;
+  cursor: pointer;
+  margin-bottom: 64px;
+}
+.ob-logo:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.ob-stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ob-stepper-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  position: relative;
+  padding-bottom: 34px;
+}
+.ob-stepper-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 28px;
+  bottom: 6px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.22);
+}
+.ob-stepper-num {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  z-index: 1;
+}
+.ob-stepper-item.is-active .ob-stepper-num {
+  background: #fff;
+  border-color: #fff;
+  color: var(--blue-700);
+}
+.ob-stepper-item.is-done .ob-stepper-num {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+  color: #fff;
+}
+.ob-stepper-label b {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 3px;
+}
+.ob-stepper-label span {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.ob-stepper-item:not(.is-active):not(.is-done) .ob-stepper-label b {
+  color: rgba(255, 255, 255, 0.6);
+}
+.ob-sidebar-footer {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+.ob-sidebar-footer a {
+  color: rgba(255, 255, 255, 0.65);
+}
+.ob-sidebar-footer a:hover {
+  color: #fff;
+}
+.ob-form-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  overflow-y: auto;
+  background: var(--card);
+}
+.ob-step {
+  width: 100%;
+  max-width: 400px;
+}
+.ob-step select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--card);
+}
+.ob-step select:focus {
+  outline: none;
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px var(--blue-50);
+}
+.ob-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+.ob-actions .btn {
+  flex: 1;
+  justify-content: center;
+  padding: 13px 16px;
+  font-size: 14px;
+}
+.ob-step-complete {
+  text-align: center;
+}
+.ob-complete-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+/* ---------- Assessment Parameter onboarding (#paramOnboardScreen) ----------
+   Reuses #onboardingScreen's .ob-sidebar/.ob-stepper for the left rail, but
+   the step content is wider (parameter lists need room) and top-aligned
+   instead of vertically centered, since it can run taller than the
+   viewport. */
+#paramOnboardScreen {
+  min-height: 100vh;
+  grid-template-columns: 320px 1fr;
+}
+.pob-form-area {
+  align-items: flex-start;
+  padding-top: 56px;
+}
+.pob-step {
+  width: 100%;
+  max-width: 680px;
+}
+.pob-step-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue-600);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.pob-modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.pob-mode-card {
+  text-align: left;
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  padding: 14px;
+  background: var(--card);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+.pob-mode-card:hover {
+  border-color: var(--blue-300, var(--blue-500));
+}
+.pob-mode-card.on {
+  border-color: var(--blue-600);
+  background: var(--blue-50);
+  box-shadow: 0 0 0 1px var(--blue-600);
+}
+.pob-mode-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--slate-bg);
+  color: var(--blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.pob-mode-card.on .pob-mode-icon {
+  background: var(--blue-100);
+}
+.pob-mode-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.pob-mode-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.pob-preview {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.pob-preview-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.pob-preview-actions a {
+  color: var(--blue-600);
+  cursor: pointer;
+  font-weight: 600;
+}
+.pob-preview-actions a:hover {
+  text-decoration: underline;
+}
+.pob-preview-list {
+  max-height: 320px;
+  overflow-y: auto;
+}
+.pob-preview-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.pob-preview-row:last-child {
+  border-bottom: none;
+}
+.pob-preview-row input[type='checkbox'] {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--blue-600);
+  cursor: pointer;
+}
+.pob-preview-check {
+  flex-shrink: 0;
+  color: var(--green-tx);
+  display: flex;
+}
+.pob-preview-info {
+  flex: 1;
+  min-width: 0;
+}
+.pob-preview-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.pob-preview-desc {
+  font-size: 12px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pob-preview-rubric {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue-700);
+  background: var(--blue-50);
+  border: 1px solid var(--blue-200);
+  border-radius: 20px;
+  padding: 3px 10px;
+  cursor: default;
+}
+.pob-scratch-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--slate-bg);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+.pob-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+  margin-top: 8px;
+}
+.pob-progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: var(--blue-600);
+  animation: pobFill 0.7s ease forwards;
+}
+@keyframes pobFill {
+  to {
+    width: 100%;
+  }
+}
+.pob-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+@media (max-width: 780px) {
+  #paramOnboardScreen {
+    grid-template-columns: 1fr;
+  }
+  .pob-modes {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 780px) {
+  #onboardingScreen {
+    grid-template-columns: 1fr;
+  }
+  .ob-sidebar {
+    padding: 24px;
+  }
+  .ob-logo {
+    margin-bottom: 24px;
+  }
+  .ob-stepper {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .ob-stepper-item {
+    padding-bottom: 0;
+  }
+  .ob-stepper-item::after {
+    display: none;
+  }
+  .ob-stepper-label span {
+    display: none;
+  }
+  .ob-sidebar-footer {
+    display: none;
+  }
+}
+
 .hide {
   display: none !important;
 }
@@ -3565,5 +4394,34 @@ body.pre-auth #authScreen {
   .upl-grid,
   .grid2 {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- print (Analytics "Cetak PDF" export) ----------
+   window.print() renders whatever's on screen, so this trims it down to
+   just the report: drop the sidebar/nav chrome and anything marked
+   .no-print (date filters, export buttons themselves -- print controls
+   don't belong in the printed output), let the content take the full
+   page width, and flatten card shadows/hover affordances that only make
+   sense on a screen. */
+@media print {
+  .sidenav,
+  .snav-divider,
+  .no-print,
+  .toast-wrap,
+  #paramTip {
+    display: none !important;
+  }
+  body {
+    padding-left: 0 !important;
+    background: #fff !important;
+  }
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+  .analytics-grid {
+    grid-template-columns: 1fr 1fr !important;
   }
 }

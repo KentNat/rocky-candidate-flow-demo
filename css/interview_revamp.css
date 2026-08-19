@@ -1,7 +1,5 @@
 /* Rocky — Live Interview (candidate experience) */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
 :root {
   /* Aligned to the recruiter side's design system (rocky-ui.css), same
      reasoning as candidate_revamp.css: brand blue/accent alias to its
@@ -111,7 +109,7 @@ body.r5-active footer.fixed-bottom {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   color: #475569;
   line-height: 1.45;
 }
@@ -130,7 +128,7 @@ body.r5-active footer.fixed-bottom {
 }
 
 .r5-setup-card .form-label {
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: #334155;
 }
@@ -154,7 +152,7 @@ body.r5-active footer.fixed-bottom {
   border: 1px dashed #8394b0;
   background: #f2f4f7;
   color: #5b6b85;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   padding: 10px 14px;
   border-radius: 12px;
@@ -176,7 +174,7 @@ body.r5-active footer.fixed-bottom {
 
 #poc-stt-hint,
 #poc-vad-hint {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #657792;
   margin-top: 6px;
 }
@@ -390,7 +388,7 @@ body.r5-active footer.fixed-bottom {
   border-radius: 999px;
   background: rgba(30, 41, 59, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #c3ceda;
   white-space: normal;
@@ -401,7 +399,7 @@ body.r5-active footer.fixed-bottom {
 }
 
 .r5-status-pill .fa-circle {
-  font-size: 0.5rem;
+  font-size: 0.6875rem;
 }
 
 .r5-status-pill.is-live .fa-circle {
@@ -499,7 +497,7 @@ body.r5-active footer.fixed-bottom {
 }
 
 .r5-bot-card-name {
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: #eef3f8;
   width: 100%;
@@ -513,7 +511,7 @@ body.r5-active footer.fixed-bottom {
 }
 
 .r5-bot-card-status {
-  font-size: 0.66rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: rgba(148, 163, 184, 0.95);
   width: 100%;
@@ -678,7 +676,7 @@ body.r5-active footer.fixed-bottom {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
 }
 
 .r5-transcript-title {
@@ -701,7 +699,7 @@ body.r5-active footer.fixed-bottom {
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.07);
   color: #8fa0b8;
-  font-size: 0.7rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   cursor: pointer;
@@ -714,7 +712,7 @@ body.r5-active footer.fixed-bottom {
 }
 
 .r5-transcript-toggle i {
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
 }
 
 /* Mode hide: hanya 2 bubble terakhir yang tampil */
@@ -744,7 +742,7 @@ body.r5-active footer.fixed-bottom {
 
 .r5-chat-waiting {
   align-self: center;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.65);
   padding: 10px 16px;
   border-radius: 999px;
@@ -811,7 +809,7 @@ body.r5-active footer.fixed-bottom {
 }
 
 .r5-bot-bubble-name {
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -822,7 +820,7 @@ body.r5-active footer.fixed-bottom {
 }
 
 .r5-bot-bubble-badge {
-  font-size: 0.58rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   padding: 2px 7px;
   border-radius: 999px;
@@ -836,7 +834,7 @@ body.r5-active footer.fixed-bottom {
 .r5-bot-bubble p,
 .r5-bot-bubble .r5-chat-bot-text {
   margin: 0;
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   line-height: 1.55;
   color: rgba(226, 232, 240, 0.92);
   white-space: pre-wrap;
@@ -876,7 +874,7 @@ body.r5-active footer.fixed-bottom {
 }
 
 .r5-you-label {
-  font-size: 0.62rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -891,7 +889,7 @@ body.r5-active footer.fixed-bottom {
 .r5-you-bubble p,
 .r5-you-bubble .r5-chat-you-text {
   margin: 0;
-  font-size: 0.84rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   white-space: pre-wrap;
   word-break: break-word;
@@ -1038,7 +1036,7 @@ body.r5-active footer.fixed-bottom {
   bottom: -2px;
   transform: translateX(-50%);
   z-index: 3;
-  font-size: 0.58rem;
+  font-size: 0.6875rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1160,7 +1158,7 @@ body.r5-active footer.fixed-bottom {
 
 .r5-mic-hint {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.88);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.65);
@@ -1198,7 +1196,7 @@ body.r5-active footer.fixed-bottom {
   gap: 8px;
   padding: 4px 0;
   border-bottom: 1px solid #e1e5ec;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
 }
 
 body.r5-debug #poc-session-info .info-label {
@@ -1233,7 +1231,7 @@ body.r5-debug #poc-session-info {
   border-radius: 12px;
   padding: 12px;
   box-shadow: var(--r5-shadow);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
 }
 
 /* Replay */
@@ -1350,7 +1348,7 @@ body.r5-debug #poc-session-info {
   }
 
   .r5-mic-hint {
-    font-size: 0.68rem;
+    font-size: 0.6875rem;
   }
 }
 
@@ -1421,7 +1419,7 @@ body.r5-debug #poc-session-info {
   background: rgba(47, 127, 166, 0.18);
   border: 1px solid rgba(53, 138, 179, 0.28);
   color: #a9d3da;
-  font-size: 0.62rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1487,7 +1485,7 @@ body.r5-debug #poc-session-info {
 }
 
 .r5-transcript-foot-note {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #8fa0b8;
   line-height: 1.35;
@@ -1504,7 +1502,7 @@ body.r5-debug #poc-session-info {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.05);
   color: #8fa0b8;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   cursor: default;
   opacity: 0.7;
 }
@@ -1635,7 +1633,7 @@ body.r5-debug #poc-session-info {
 }
 
 .r5-layout-dashboard .r5-video-panel .r5-bot-card-name {
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: #eef3f8;
   text-align: left;
@@ -1646,7 +1644,7 @@ body.r5-debug #poc-session-info {
 }
 
 .r5-layout-dashboard .r5-video-panel .r5-bot-card-status {
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   font-weight: 500;
   color: #8fa0b8;
   text-align: left;
@@ -1749,7 +1747,7 @@ body.r5-debug #poc-session-info {
 }
 
 .r5-turn-sub {
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   color: #8fa0b8;
   line-height: 1.35;
   margin-top: 1px;
@@ -1766,7 +1764,7 @@ body.r5-debug #poc-session-info {
 .r5-mic-cta {
   margin: 0;
   min-height: 0;
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #8fa0b8;
   text-align: center;
@@ -1803,12 +1801,12 @@ body.r5-debug #poc-session-info {
 
 .r5-tips-head i {
   color: #fbbf24;
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
 }
 
 .r5-tips-text {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   line-height: 1.4;
   color: #8fa0b8;
 }
@@ -1940,7 +1938,7 @@ body.r5-debug #poc-session-info {
   background: linear-gradient(145deg, #358ab3 0%, #256e85 100%);
   border: none;
   color: #fff;
-  font-size: 0.95rem;
+  font-size: 1rem;
   box-shadow: 0 4px 14px rgba(37, 110, 133, 0.28);
 }
 
@@ -1953,14 +1951,14 @@ body.r5-debug #poc-session-info {
 }
 
 .r5-layout-dashboard .r5-bot-bubble .r5-msg-sender {
-  font-size: 0.84rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: #eef3f8;
   line-height: 1.25;
 }
 
 .r5-layout-dashboard .r5-bot-bubble .r5-msg-time {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #8fa0b8;
   font-variant-numeric: tabular-nums;
@@ -1969,7 +1967,7 @@ body.r5-debug #poc-session-info {
 
 .r5-layout-dashboard .r5-bot-bubble p,
 .r5-layout-dashboard .r5-bot-bubble .r5-chat-bot-text {
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   line-height: 1.55;
   color: #c3ceda;
 }
@@ -2000,7 +1998,7 @@ body.r5-debug #poc-session-info {
 }
 
 .r5-msg-sender {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: #8fa0b8;
   line-height: 1.3;
@@ -2014,7 +2012,7 @@ body.r5-debug #poc-session-info {
 }
 
 .r5-msg-time {
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: rgba(148, 163, 184, 0.75);
   font-variant-numeric: tabular-nums;
@@ -2023,7 +2021,7 @@ body.r5-debug #poc-session-info {
 
 .r5-layout-dashboard .r5-you-bubble p,
 .r5-layout-dashboard .r5-you-bubble .r5-chat-you-text {
-  font-size: 0.84rem;
+  font-size: 0.875rem;
   color: #c3ceda;
   word-break: break-word;
   overflow-wrap: anywhere;
@@ -2116,11 +2114,11 @@ body.r5-debug #poc-session-info {
   }
 
   .r5-layout-dashboard .r5-video-panel .r5-bot-card-name {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
   }
 
   .r5-layout-dashboard .r5-video-panel .r5-bot-card-status {
-    font-size: 0.64rem;
+    font-size: 0.6875rem;
   }
 
   .r5-layout-dashboard .r5-control-bar {
@@ -2251,7 +2249,7 @@ body.r5-landing-active #kt_content {
 }
 
 .r5-landing-role-label {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   opacity: 0.85;
   margin: 0;
 }
@@ -2283,7 +2281,7 @@ body.r5-landing-active #kt_content {
 
 .r5-landing-meta-label {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -2293,7 +2291,7 @@ body.r5-landing-active #kt_content {
 
 .r5-landing-meta-value {
   display: block;
-  font-size: 0.92rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: #061d3c;
 }
@@ -2307,7 +2305,7 @@ body.r5-landing-active #kt_content {
 }
 
 .r5-landing-section-title {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -2320,7 +2318,7 @@ body.r5-landing-active #kt_content {
 }
 
 .r5-landing-note {
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   color: #5b6b85;
   background: #e6f1f3;
   border-radius: 12px;
@@ -2337,7 +2335,7 @@ body.r5-landing-active #kt_content {
 .r5-landing-footer-note {
   text-align: center;
   color: rgba(255, 255, 255, 0.45);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   margin-top: 18px;
   margin-bottom: 0;
 }
@@ -2437,7 +2435,7 @@ body.r5-landing-active #kt_content {
   transform: translateX(-50%) translateY(6px);
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(5, 150, 105, 0.98));
   color: #ffffff;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   padding: 8px 14px;

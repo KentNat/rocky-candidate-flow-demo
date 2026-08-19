@@ -16,16 +16,16 @@
      to match rocky-ui's card/input proportions too. */
   --rv-font: 'Plus Jakarta Sans', system-ui, sans-serif;
   --rv-font-heading: var(--font-heading, 'Montserrat', system-ui, sans-serif);
-  --rv-bg: #0b1420;
-  --rv-bg-elevated: #101c2c;
+  --rv-bg: var(--bg);
+  --rv-bg-elevated: var(--card);
   --rv-surface: rgba(255, 255, 255, 0.04);
   --rv-surface-hover: rgba(255, 255, 255, 0.07);
   --rv-border: rgba(255, 255, 255, 0.08);
   --rv-border-strong: rgba(255, 255, 255, 0.14);
-  --rv-text: #eef3f8;
-  --rv-text-muted: #8fa0b8;
-  --rv-text-dim: #8fa0b8;
-  --rv-primary: var(--blue-600, #2f7fa6);
+  --rv-text: var(--ink);
+  --rv-text-muted: var(--muted);
+  --rv-text-dim: var(--muted);
+  --rv-primary: var(--blue-600, #2e7ca2);
   --rv-primary-dark: var(--blue-700, #256e85);
   --rv-accent: var(--accent-2, #41b2a3);
   --rv-success: #34d399;
@@ -49,15 +49,15 @@
 
 :root[data-theme='light'],
 .rv-body[data-theme='light'] {
-  --rv-bg: #f2f4f7;
-  --rv-bg-elevated: #ffffff;
+  --rv-bg: var(--bg);
+  --rv-bg-elevated: var(--card);
   --rv-surface: rgba(6, 29, 60, 0.035);
   --rv-surface-hover: rgba(6, 29, 60, 0.06);
   --rv-border: rgba(6, 29, 60, 0.1);
   --rv-border-strong: rgba(6, 29, 60, 0.16);
-  --rv-text: #061d3c;
-  --rv-text-muted: #5b6b85;
-  --rv-text-dim: #5b6b85;
+  --rv-text: var(--ink);
+  --rv-text-muted: var(--muted);
+  --rv-text-dim: var(--muted);
   --rv-gradient-glow: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(47, 127, 166, 0.14), transparent);
   --rv-shadow: 0 16px 48px rgba(6, 29, 60, 0.12);
   --rv-well-bg: rgba(6, 29, 60, 0.045);
@@ -192,7 +192,7 @@ body.rv-body label {
 
 .rv-brand small {
   display: block;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: var(--rv-accent);
   text-transform: uppercase;
@@ -202,7 +202,7 @@ body.rv-body label {
 }
 
 .rv-topbar-meta {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--rv-text-muted);
   font-weight: 500;
 }
@@ -308,7 +308,7 @@ body.rv-body label {
 
 .rv-invite-card p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--rv-text-muted);
 }
 
@@ -336,7 +336,7 @@ body.rv-body label {
 
 .rv-login-form-wrap .subtitle {
   color: var(--rv-text-muted);
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   margin-bottom: 28px;
 }
 
@@ -354,7 +354,7 @@ body.rv-body label {
   background: var(--rv-well-bg) !important;
   color: var(--rv-text) !important;
   font-family: var(--rv-font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: border-color var(--rv-transition), box-shadow var(--rv-transition);
   box-shadow: none;
 }
@@ -374,7 +374,7 @@ body.rv-body label {
 
 .rv-field label {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -412,7 +412,7 @@ body.rv-body label {
   border: none;
   border-radius: var(--rv-radius-sm);
   font-family: var(--rv-font);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   transition: transform var(--rv-transition), box-shadow var(--rv-transition), opacity var(--rv-transition);
@@ -583,7 +583,7 @@ body.rv-body label {
 
 .rv-stat label {
   display: block;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -592,7 +592,7 @@ body.rv-body label {
 }
 
 .rv-stat span {
-  font-size: 0.92rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
@@ -642,7 +642,7 @@ body.rv-body label {
   border-radius: 50%;
   background: var(--rv-border);
   color: var(--rv-text-dim);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
@@ -661,7 +661,7 @@ body.rv-body label {
   align-items: center;
   justify-content: center;
   gap: 3px;
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: var(--rv-text-dim);
   white-space: nowrap;
@@ -679,7 +679,7 @@ body.rv-body label {
 
 .rv-ready-panel > p {
   color: var(--rv-text-muted);
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   margin: 0 0 24px;
   line-height: 1.55;
 }
@@ -722,7 +722,7 @@ body.rv-body label {
   justify-content: center;
   margin-top: 1px;
   transition: all var(--rv-transition);
-  font-size: 0.7rem;
+  font-size: 0.6875rem;
   color: transparent;
 }
 
@@ -745,7 +745,7 @@ body.rv-body label {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .rv-ready-item.is-checked .rv-ready-icon { background: rgba(52, 211, 153, 0.12); color: var(--rv-success); }
@@ -770,7 +770,7 @@ body.rv-body label {
 }
 
 .rv-cta-hint {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--rv-text-dim);
   text-align: center;
   margin-top: 12px;
@@ -826,7 +826,7 @@ body.rv-overlay-open {
 
 .rv-overlay-card > p {
   color: var(--rv-text-muted);
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   margin: 0 0 28px;
 }
 
@@ -847,7 +847,7 @@ body.rv-overlay-open {
 }
 
 .rv-progress-label {
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--rv-text-muted);
   min-height: 1.4em;
@@ -976,7 +976,7 @@ body.rv-overlay-open {
 
 .rv-status-panel > p {
   color: var(--rv-text-muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.55;
   margin: 0;
   max-width: 360px;
@@ -1096,7 +1096,7 @@ body.rv-overlay-open {
 }
 
 .prep-noise-status {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -1124,7 +1124,7 @@ body.rv-overlay-open {
   max-width: 85%;
   padding: 10px 14px;
   border-radius: 14px;
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   line-height: 1.4;
 }
 
@@ -1177,7 +1177,7 @@ body.rv-overlay-open {
 
 .prep-net-metric .net-lbl {
   display: block;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   color: var(--rv-text-muted);
   margin-bottom: 4px;
 }
@@ -1237,7 +1237,7 @@ body.rv-overlay-open {
 
 .prep-flow-slide-head p {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   line-height: 1.55;
   color: var(--rv-text-muted);
 }
@@ -1247,7 +1247,7 @@ body.rv-overlay-open {
   margin-bottom: 8px;
   padding: 4px 10px;
   border-radius: 999px;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1284,7 +1284,7 @@ body.rv-overlay-open {
   gap: 8px;
   padding: 10px 14px;
   border-radius: 12px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   border: 1px solid var(--rv-border);
   background: var(--rv-surface-hover);
@@ -1327,7 +1327,7 @@ body.rv-overlay-open {
 .prep-flow-msg {
   padding: 10px 12px;
   border-radius: 12px;
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   line-height: 1.45;
   opacity: 0.55;
   transition: opacity var(--rv-transition);
@@ -1351,7 +1351,7 @@ body.rv-overlay-open {
 .prep-flow-msg strong {
   display: block;
   margin-bottom: 4px;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--rv-text-muted);
@@ -1442,13 +1442,13 @@ body.rv-overlay-open {
 
 .prep-flow-turn strong {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--rv-text);
 }
 
 .prep-flow-turn small {
   display: block;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   color: var(--rv-text-muted);
   margin-top: 2px;
 }
@@ -1502,14 +1502,14 @@ body.rv-overlay-open {
 }
 
 .prep-flow-send-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--rv-primary);
 }
 
 .prep-flow-note {
   margin: 14px 0 0;
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   color: var(--rv-text-muted);
   text-align: center;
 }
@@ -1555,7 +1555,7 @@ body.rv-overlay-open {
 
 .prep-practice-transcript-head {
   padding: 8px 10px;
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1638,13 +1638,13 @@ body.rv-overlay-open {
 
 .prep-practice-bot-chip strong {
   display: block;
-  font-size: 0.66rem;
+  font-size: 0.6875rem;
   color: var(--rv-text);
 }
 
 .prep-practice-bot-chip span {
   display: block;
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
   color: var(--rv-text-muted);
 }
 
@@ -1672,7 +1672,7 @@ body.rv-overlay-open {
 
 .prep-practice-hint {
   margin: 6px 0 0;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   text-align: center;
   color: var(--rv-text-muted);
 }
@@ -1759,7 +1759,7 @@ body.rv-overlay-open {
   justify-content: center;
   background: linear-gradient(145deg, #358ab3, #256e85);
   color: #fff;
-  font-size: 0.62rem;
+  font-size: 0.6875rem;
 }
 
 .prep-practice-shell .r5-bot-bubble-body {
@@ -1788,7 +1788,7 @@ body.rv-overlay-open {
 }
 
 .prep-practice-shell .r5-msg-sender {
-  font-size: 0.62rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   color: var(--rv-text-muted);
 }
@@ -1809,7 +1809,7 @@ body.rv-overlay-open {
 }
 
 .prep-practice-shell .r5-msg-time {
-  font-size: 0.58rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: rgba(148, 163, 184, 0.75);
 }
@@ -1817,7 +1817,7 @@ body.rv-overlay-open {
 .prep-practice-shell .r5-chat-bot-text,
 .prep-practice-shell .r5-chat-you-text {
   margin: 0;
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   line-height: 1.4;
   color: var(--rv-text);
   word-break: break-word;
@@ -1964,7 +1964,7 @@ body.rv-overlay-open {
 .prep-practice-mic-scope.r5-layout-dashboard .r5-mic-cta {
   margin: 0;
   min-height: 0;
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--rv-text-muted);
   text-align: center;
@@ -1986,11 +1986,11 @@ body.rv-overlay-open {
 }
 
 .prep-practice-shell .prep-flow-turn strong {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
 }
 
 .prep-practice-shell .prep-flow-turn small {
-  font-size: 0.62rem;
+  font-size: 0.6875rem;
 }
 
 @media (max-width: 720px) {
@@ -2078,7 +2078,7 @@ body.rv-overlay-open {
 }
 
 .rv-done-header-section p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--rv-text-muted);
   max-width: 580px;
   margin: 0;
@@ -2174,14 +2174,14 @@ body.rv-overlay-open {
 }
 
 .rv-done-video-placeholder h4 {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   margin: 0 0 6px;
   color: var(--rv-text);
 }
 
 .rv-done-video-placeholder p {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   line-height: 1.45;
   margin: 0;
   max-width: 280px;
@@ -2223,7 +2223,7 @@ body.rv-overlay-open {
 }
 
 .rv-summary-body p {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
   color: var(--rv-text-muted);
@@ -2346,7 +2346,7 @@ body.rv-overlay-open {
 }
 
 .rv-timeline-badge {
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   padding: 2px 6px;
@@ -2365,13 +2365,13 @@ body.rv-overlay-open {
 }
 
 .rv-timeline-time {
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   color: var(--rv-text-muted);
   margin-left: auto;
 }
 
 .rv-timeline-text {
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
   margin: 0;
   color: var(--rv-text);
@@ -2418,7 +2418,7 @@ body.rv-overlay-open {
 }
 
 .rv-summary-body p {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
   color: var(--rv-text-muted);
@@ -2541,7 +2541,7 @@ body.rv-overlay-open {
 }
 
 .rv-timeline-badge {
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   padding: 2px 6px;
@@ -2560,13 +2560,13 @@ body.rv-overlay-open {
 }
 
 .rv-timeline-time {
-  font-size: 0.68rem;
+  font-size: 0.6875rem;
   color: var(--rv-text-muted);
   margin-left: auto;
 }
 
 .rv-timeline-text {
-  font-size: 0.82rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
   margin: 0;
   color: var(--rv-text);
@@ -2654,14 +2654,14 @@ body.rv-overlay-open {
 }
 
 .rv-sidebar-done-text h3 {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   margin: 0 0 4px;
   color: var(--rv-success);
 }
 
 .rv-sidebar-done-text p {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   line-height: 1.4;
   margin: 0;
   color: var(--rv-text-muted);
@@ -2739,7 +2739,7 @@ body.rv-overlay-open {
   color: #ef4444;
   padding: 8px 16px;
   border-radius: 8px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -2753,7 +2753,7 @@ body.rv-overlay-open {
 }
 
 .rv-btn-logout i {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 
 /* Tooltip styling for Duration Info */
@@ -2774,7 +2774,7 @@ body.rv-overlay-open {
   color: var(--rv-text);
   padding: 10px 14px;
   border-radius: var(--rv-radius-sm);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
   width: 250px;
   white-space: normal;

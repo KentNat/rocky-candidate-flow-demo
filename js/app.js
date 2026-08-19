@@ -11,10 +11,7 @@ function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   document.body.setAttribute('data-theme', theme);
   document.querySelectorAll('.theme-icon-mirror, #theme-icon').forEach((icon) => {
-    icon.className = icon.className.replace(/fa-(moon|sun)/, theme === 'light' ? 'fa-sun' : 'fa-moon');
-    if (!/fa-(moon|sun)/.test(icon.className)) {
-      icon.classList.add(theme === 'light' ? 'fa-sun' : 'fa-moon');
-    }
+    icon.innerHTML = mi(theme === 'light' ? 'light_mode' : 'dark_mode', 14);
   });
   const logo = theme === 'light' ? 'assets/rocky_logo_on_light.svg' : 'assets/rocky_logo_on_dark.svg';
   ['logo-login', 'logo-done'].forEach((id) => {
@@ -46,14 +43,14 @@ function toggleHudMic() {
   hudMicOn = !hudMicOn;
   const btn = document.getElementById('hud-mic-toggle');
   btn.classList.toggle('is-off', !hudMicOn);
-  btn.querySelector('i').className = hudMicOn ? 'fa-solid fa-microphone' : 'fa-solid fa-microphone-slash';
+  btn.innerHTML = mi(hudMicOn ? 'mic' : 'mic_off', 14);
   btn.setAttribute('aria-label', hudMicOn ? 'Matikan mikrofon' : 'Nyalakan mikrofon');
 }
 function toggleHudSpeaker() {
   hudSpeakerOn = !hudSpeakerOn;
   const btn = document.getElementById('hud-speaker-toggle');
   btn.classList.toggle('is-off', !hudSpeakerOn);
-  btn.querySelector('i').className = hudSpeakerOn ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+  btn.innerHTML = mi(hudSpeakerOn ? 'volume_up' : 'volume_off', 14);
   btn.setAttribute('aria-label', hudSpeakerOn ? 'Matikan speaker' : 'Nyalakan speaker');
 }
 
@@ -89,7 +86,7 @@ function togglePasswordVisibility() {
   const icon = document.getElementById('pw-eye-icon');
   const isPw = input.type === 'password';
   input.type = isPw ? 'text' : 'password';
-  icon.className = isPw ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+  icon.innerHTML = mi(isPw ? 'visibility_off' : 'visibility', 16);
 }
 
 function handleLogin(event) {

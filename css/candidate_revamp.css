@@ -2269,16 +2269,6 @@ body.rv-overlay-open {
   position: relative;
 }
 
-.rv-done-chat-thread::before {
-  content: '';
-  position: absolute;
-  top: 12px;
-  bottom: 12px;
-  left: 17px;
-  width: 2px;
-  background: linear-gradient(to bottom, rgba(47, 127, 166, 0.4), rgba(16, 185, 129, 0.4));
-}
-
 .rv-done-chat-thread::-webkit-scrollbar {
   width: 6px;
 }
@@ -2309,6 +2299,27 @@ body.rv-overlay-open {
 
 .rv-timeline-item.candidate .rv-timeline-node {
   background: var(--rv-success);
+}
+
+/* Per-item connector segment instead of one overlay line spanning the whole
+   scroll container -- the container is height-clamped (max-height/flex
+   scrolling), so an overlay anchored with top/bottom would size itself to
+   the clamped viewport, not the actual (taller, scrollable) content, and
+   break partway through. Each item draws its own segment from its node
+   down through the gap to the next node, so it's correct regardless of
+   how tall the content actually is (same technique as .fp-step-item). */
+.rv-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 26px;
+  bottom: -34px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(47, 127, 166, 0.4), rgba(16, 185, 129, 0.4));
+}
+
+.rv-timeline-item:last-child::before {
+  display: none;
 }
 
 .rv-timeline-bubble {
@@ -2464,16 +2475,6 @@ body.rv-overlay-open {
   position: relative;
 }
 
-.rv-done-chat-thread::before {
-  content: '';
-  position: absolute;
-  top: 12px;
-  bottom: 12px;
-  left: 17px;
-  width: 2px;
-  background: linear-gradient(to bottom, rgba(47, 127, 166, 0.4), rgba(16, 185, 129, 0.4));
-}
-
 .rv-done-chat-thread::-webkit-scrollbar {
   width: 6px;
 }
@@ -2504,6 +2505,27 @@ body.rv-overlay-open {
 
 .rv-timeline-item.candidate .rv-timeline-node {
   background: var(--rv-success);
+}
+
+/* Per-item connector segment instead of one overlay line spanning the whole
+   scroll container -- the container is height-clamped (max-height/flex
+   scrolling), so an overlay anchored with top/bottom would size itself to
+   the clamped viewport, not the actual (taller, scrollable) content, and
+   break partway through. Each item draws its own segment from its node
+   down through the gap to the next node, so it's correct regardless of
+   how tall the content actually is (same technique as .fp-step-item). */
+.rv-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 26px;
+  bottom: -34px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(47, 127, 166, 0.4), rgba(16, 185, 129, 0.4));
+}
+
+.rv-timeline-item:last-child::before {
+  display: none;
 }
 
 .rv-timeline-bubble {
@@ -2620,16 +2642,6 @@ body.rv-overlay-open {
   scrollbar-width: thin;
   scrollbar-color: var(--rv-border-strong) transparent;
   position: relative;
-}
-
-.rv-done-chat-thread::before {
-  content: '';
-  position: absolute;
-  top: 12px;
-  bottom: 12px;
-  left: 17px;
-  width: 2px;
-  background: linear-gradient(to bottom, rgba(47, 127, 166, 0.4), rgba(16, 185, 129, 0.4));
 }
 
 .rv-done-chat-thread::-webkit-scrollbar {

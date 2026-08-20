@@ -176,6 +176,20 @@ function handleQuestionnaireSubmit(event) {
   return false;
 }
 
+/* ---------------- checklist → pre-questionnaire confirm → questionnaire ---------------- */
+function openPreQuestionnaireConfirm() {
+  const overlay = document.getElementById('pre-questionnaire-confirm-overlay');
+  overlay.hidden = false;
+  overlay.classList.add('is-visible');
+}
+
+function confirmStartQuestionnaire() {
+  const overlay = document.getElementById('pre-questionnaire-confirm-overlay');
+  overlay.classList.remove('is-visible');
+  overlay.hidden = true;
+  goToScreen('screen-questionnaire');
+}
+
 /* ---------------- checklist → prepare overlay → interview ---------------- */
 function startInterview() {
   const overlay = document.getElementById('prepare-overlay');

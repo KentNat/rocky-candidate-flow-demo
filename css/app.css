@@ -277,7 +277,7 @@ body.is-live-call .demo-banner {
   margin: 0 0 2px;
 }
 
-.pf-job-mini p {
+.rv-body .pf-job-mini p {
   font-size: 12px;
   color: var(--muted);
   margin: 0 0 10px;
@@ -435,7 +435,7 @@ body.is-live-call .demo-banner {
   margin: 0 0 4px;
 }
 
-.pf-check-copy p {
+.rv-body .pf-check-copy p {
   font-size: 12px;
   color: var(--muted);
   line-height: 1.55;
@@ -457,7 +457,7 @@ body.is-live-call .demo-banner {
   text-align: center;
 }
 
-.pf-metric label {
+.rv-body .pf-metric label {
   display: block;
   font-size: 11px;
   font-weight: 700;
@@ -591,7 +591,7 @@ body.is-live-call .demo-banner {
 
 .pf-video-ref-copy h3 i { color: var(--blue-600); }
 
-.pf-video-ref-copy p {
+.rv-body .pf-video-ref-copy p {
   font-size: 12px;
   color: var(--muted);
   line-height: 1.5;
@@ -613,16 +613,16 @@ body.is-live-call .demo-banner {
   color: var(--green-tx);
 }
 
-.pf-summary-card h3 {
+.rv-body .pf-summary-card h3 {
   font-size: 15px;
   font-weight: 700;
   color: var(--green-tx);
   margin: 0 0 2px;
 }
 
-.pf-summary-card p {
+.rv-body .pf-summary-card p {
   font-size: 12px;
-  color: var(--ink-2);
+  color: var(--green-tx);
   margin: 0;
 }
 

@@ -312,7 +312,7 @@ body.rv-body label {
   color: var(--rv-text);
 }
 
-.rv-invite-card p {
+.rv-body .rv-invite-card p {
   margin: 0;
   font-size: 0.875rem;
   color: var(--rv-text-muted);
@@ -378,7 +378,7 @@ body.rv-body label {
 .rv-input-wrap input::placeholder,
 .rv-input-wrap .form-control::placeholder { color: var(--rv-text-dim); }
 
-.rv-field label {
+.rv-body .rv-field label {
   display: block;
   font-size: 0.75rem;
   font-weight: 700;
@@ -462,7 +462,7 @@ body.rv-body label {
   gap: 10px;
 }
 
-.rv-hint-list li {
+.rv-body .rv-hint-list li {
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -587,7 +587,7 @@ body.rv-body label {
   padding: 12px 14px;
 }
 
-.rv-stat label {
+.rv-body .rv-stat label {
   display: block;
   font-size: 0.6875rem;
   font-weight: 700;
@@ -762,7 +762,7 @@ body.rv-body label {
   font-weight: 700;
 }
 
-.rv-ready-copy p {
+.rv-body .rv-ready-copy p {
   margin: 0;
   font-size: 0.8125rem;
   color: var(--rv-text-muted);
@@ -1241,7 +1241,7 @@ body.rv-overlay-open {
   color: var(--rv-text);
 }
 
-.prep-flow-slide-head p {
+.rv-body .prep-flow-slide-head p {
   margin: 0;
   font-size: 0.8125rem;
   line-height: 1.55;
@@ -2083,7 +2083,7 @@ body.rv-overlay-open {
   margin: 0 0 8px;
 }
 
-.rv-done-header-section p {
+.rv-body .rv-done-header-section p {
   font-size: 1rem;
   color: var(--rv-text-muted);
   max-width: 580px;
@@ -2227,7 +2227,7 @@ body.rv-overlay-open {
   color: var(--rv-text);
 }
 
-.rv-summary-body p {
+.rv-body .rv-summary-body p {
   font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
@@ -2422,7 +2422,7 @@ body.rv-overlay-open {
   color: var(--rv-text);
 }
 
-.rv-summary-body p {
+.rv-body .rv-summary-body p {
   font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
@@ -2658,14 +2658,14 @@ body.rv-overlay-open {
   flex: 1;
 }
 
-.rv-sidebar-done-text h3 {
+.rv-body .rv-sidebar-done-text h3 {
   font-size: 1rem;
   font-weight: 700;
   margin: 0 0 4px;
   color: var(--rv-success);
 }
 
-.rv-sidebar-done-text p {
+.rv-body .rv-sidebar-done-text p {
   font-size: 0.75rem;
   line-height: 1.4;
   margin: 0;

@@ -2394,7 +2394,7 @@ body.r5-landing-active #kt_content {
   margin: 0 0 8px;
 }
 
-.rv-session-boot p {
+.rv-body .rv-session-boot p {
   color: #8fa0b8;
   font-size: 0.875rem;
   margin: 0 0 28px;

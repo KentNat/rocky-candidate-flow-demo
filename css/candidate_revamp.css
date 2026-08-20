@@ -28,6 +28,12 @@
   --rv-primary: var(--blue-600, #2e7ca2);
   --rv-primary-dark: var(--blue-700, #256e85);
   --rv-accent: var(--accent-2, #41b2a3);
+  /* Deliberately NOT aliased to the canonical --green-tx/--amber-tx/--red-tx
+     badge-text tokens: those are muted, tuned for readable text on a light
+     badge pill, while these are flat, theme-invariant, vivid accent colors
+     used as glyph/dot/glow fills against dark or glassmorphism surfaces
+     (checkmarks, status dots, icon tints) throughout the candidate flow.
+     Same "distinct visual register" reasoning as --rv-shadow/--rv-gradient. */
   --rv-success: #34d399;
   --rv-warning: #fbbf24;
   --rv-danger: #f87171;
@@ -460,12 +466,12 @@ body.rv-body label {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   color: var(--rv-text-dim);
   line-height: 1.45;
 }
 
-.rv-hint-list li i,
+.rv-hint-list li svg,
 .rv-hint-list li .rv-ico {
   color: var(--rv-primary);
   margin-top: 2px;
@@ -556,7 +562,7 @@ body.rv-body label {
 }
 
 .rv-job-hero .position {
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   opacity: 0.92;
   margin: 0;
   position: relative;
@@ -752,13 +758,13 @@ body.rv-body label {
 
 .rv-ready-copy h3 {
   margin: 0 0 3px;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
 .rv-ready-copy p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   color: var(--rv-text-muted);
   line-height: 1.45;
 }
@@ -865,7 +871,7 @@ body.rv-overlay-open {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   color: var(--rv-text-dim);
   padding: 8px 12px;
   border-radius: 10px;
@@ -949,7 +955,7 @@ body.rv-overlay-open {
 .rv-dialog-card > p {
   text-align: center;
   color: var(--rv-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   line-height: 1.55;
   margin: 0 0 24px;
 }
@@ -1190,7 +1196,7 @@ body.rv-overlay-open {
 }
 
 .prep-net-status {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   text-align: center;
   margin-top: 8px;
@@ -2127,7 +2133,7 @@ body.rv-overlay-open {
   gap: 8px;
 }
 
-.rv-done-card-title i {
+.rv-done-card-title svg {
   color: var(--rv-primary);
 }
 
@@ -2166,8 +2172,7 @@ body.rv-overlay-open {
   color: var(--rv-text-muted);
 }
 
-.rv-done-video-placeholder i {
-  font-size: 2.2rem;
+.rv-done-video-placeholder svg {
   color: var(--rv-primary);
   margin-bottom: 12px;
   animation: pulse-slow 2s infinite ease-in-out;
@@ -2230,7 +2235,7 @@ body.rv-overlay-open {
 }
 
 .rv-summary-link {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--rv-primary);
   text-decoration: none;
@@ -2340,7 +2345,7 @@ body.rv-overlay-open {
 }
 
 .rv-timeline-name {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--rv-text);
 }
@@ -2378,7 +2383,7 @@ body.rv-overlay-open {
 }
 
 .rv-done-chat-empty {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   color: var(--rv-text-muted);
   text-align: center;
   margin: 40px 0;
@@ -2425,7 +2430,7 @@ body.rv-overlay-open {
 }
 
 .rv-summary-link {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--rv-primary);
   text-decoration: none;
@@ -2535,7 +2540,7 @@ body.rv-overlay-open {
 }
 
 .rv-timeline-name {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--rv-text);
 }
@@ -2573,7 +2578,7 @@ body.rv-overlay-open {
 }
 
 .rv-done-chat-empty {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   color: var(--rv-text-muted);
   text-align: center;
   margin: 40px 0;
@@ -2674,7 +2679,7 @@ body.rv-overlay-open {
 
 .step-check-icon {
   color: var(--rv-success);
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   margin-left: 4px;
   vertical-align: middle;
 }
@@ -2720,7 +2725,7 @@ body.rv-overlay-open {
   background: var(--rv-surface);
   color: var(--rv-text-muted);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   transition: background var(--rv-transition), color var(--rv-transition), border-color var(--rv-transition);
 }
 
@@ -2750,10 +2755,6 @@ body.rv-overlay-open {
   color: var(--rv-danger);
   border-color: rgba(239, 68, 68, 0.35);
   transform: translateY(-1px);
-}
-
-.rv-btn-logout i {
-  font-size: 0.875rem;
 }
 
 /* Tooltip styling for Duration Info */

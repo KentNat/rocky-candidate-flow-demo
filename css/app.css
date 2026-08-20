@@ -57,12 +57,8 @@
   color: #5b7086;
 }
 
-.demo-cam-placeholder i {
-  font-size: 2.4rem;
-}
-
 .demo-cam-placeholder span {
-  font-size: 0.8rem;
+  font-size: 0.8125rem;
   font-weight: 600;
 }
 
@@ -290,9 +286,8 @@ body.is-live-call .demo-banner {
   gap: 6px;
 }
 
-.pf-job-mini-meta i {
+.pf-job-mini-meta svg {
   color: var(--blue-600);
-  width: 12px;
 }
 
 .pf-stepper {
@@ -499,9 +494,8 @@ body.is-live-call .demo-banner {
   text-align: center;
 }
 
-.pf-how-step i {
+.pf-how-step svg {
   color: var(--blue-600);
-  font-size: 1.15rem;
   margin-bottom: 8px;
   display: block;
 }
@@ -602,8 +596,7 @@ body.is-live-call .demo-banner {
   margin-bottom: 24px;
 }
 
-.pf-summary-card i {
-  font-size: 1.6rem;
+.pf-summary-card svg {
   color: var(--green-tx);
 }
 

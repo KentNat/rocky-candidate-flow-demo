@@ -187,11 +187,24 @@ body.is-live-call .demo-banner {
 }
 
 /* Compact 4-stage journey indicator, shown on both pre-call screens so the
-   candidate always knows where they are in the overall flow. */
+   candidate always knows where they are in the overall flow. Centered on
+   the topbar regardless of how wide the brand/title or the right-side
+   controls are -- .pf-topbar's own `position: sticky` already establishes
+   the containing block this needs. */
 .pf-journey {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+@media (max-width: 900px) {
+  .pf-journey {
+    display: none;
+  }
 }
 
 .pf-journey-step {

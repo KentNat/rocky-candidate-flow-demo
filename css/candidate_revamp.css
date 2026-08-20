@@ -2714,26 +2714,6 @@ body.rv-overlay-open {
   gap: 20px;
 }
 
-.rv-theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid var(--rv-border);
-  background: var(--rv-surface);
-  color: var(--rv-text-muted);
-  cursor: pointer;
-  font-size: 0.875rem;
-  transition: background var(--rv-transition), color var(--rv-transition), border-color var(--rv-transition);
-}
-
-.rv-theme-toggle:hover {
-  background: var(--rv-surface-hover);
-  color: var(--rv-text);
-  border-color: var(--rv-border-strong);
-}
 
 .rv-btn-logout {
   display: inline-flex;

@@ -10,8 +10,8 @@ function currentTheme() {
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   document.body.setAttribute('data-theme', theme);
-  document.querySelectorAll('.theme-icon-mirror, #theme-icon').forEach((icon) => {
-    icon.innerHTML = mi(theme === 'light' ? 'light_mode' : 'dark_mode', 14);
+  document.querySelectorAll('.theme-toggle input[type="checkbox"]').forEach((cb) => {
+    cb.checked = theme === 'dark';
   });
   const logo = theme === 'light' ? 'assets/rocky_logo_on_light.svg' : 'assets/rocky_logo_on_dark.svg';
   ['logo-login', 'logo-done'].forEach((id) => {
